@@ -29,21 +29,30 @@ document.querySelectorAll(".btn").forEach(button => {
     }
 
     if (["+", "-", "*", "/"].includes(val)) {
+      if (firstOperand && operator && current) {
+        // Si déjà une opération en cours, calcule d'abord
+        firstOperand = eval(`${firstOperand} ${operator} ${current}`).toString();
+        display.textContent = firstOperand;
+      } else if (current) {
+        firstOperand = current;
+      }
       operator = val;
-      firstOperand = current;
       reset = true;
       return;
     }
 
     if (button.id === "equals") {
-      try {
-        current = eval(current).toString();
-      } catch (e) {
-        current = "Erreur";
+      if (firstOperand && operator && current) {
+        try {
+          current = eval(`${firstOperand} ${operator} ${current}`).toString();
+        } catch (e) {
+          current = "Erreur";
+        }
+        display.textContent = current;
+        firstOperand = "";
+        operator = "";
+        reset = true;
       }
-      display.textContent = current;
-      operator = "";
-      firstOperand = "";
       return;
     }
 
