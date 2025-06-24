@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Institut Supérieur d'Informatique</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0f766e',
+                        secondary: '#f5f5f5',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Banner -->
+    <header>
+        <!-- Top Bar -->
+        <div class="bg-primary text-white py-2">
+            <div class="container mx-auto px-4 lg:px-6">
+                <div class="flex flex-col md:flex-row justify-between text-sm">
+                    <div class="flex items-center mb-2 md:mb-0">
+                        <i class="fas fa-phone mr-2"></i>
+                        <span>+261 38 34 563 78 ou +261 34 72 896 32</span>
+                    </div>
+                    <div class="flex items-center mb-2 md:mb-0">
+                        <i class="fas fa-envelope mr-2"></i>
+                        <a href="mailto:contact@insi.mg" class="hover:underline">contact@insi.mg</a>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-map-marker-alt mr-2"></i>
+                        <span>Lot VF 32 Ter Ankazotokana Ambanidia</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Navigation -->
+        <nav class="bg-white shadow-md relative">
+            <div class="container mx-auto px-4 lg:px-6">
+                <div class="flex justify-between items-center py-4">
+                    <div class="logo-container h-16 w-16 md:h-20 md:w-20">
+                        <a href="index.html">
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Capture_d_%C3%A9cran_2025-03-25_113510-removebg-preview-GOtROsl8wquhfZkDvQFDB6b9s2VXS0.png" alt="INSI Logo" class="logo-img">
+                        </a>
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    <button id="menu-toggle" class="md:hidden text-gray-600 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+
+                    <!-- Desktop Menu -->
+                    <ul class="hidden md:flex space-x-6 lg:space-x-8">
+                        <li class="group relative">
+                            <a href="#" class="flex items-center py-2 text-gray-700 hover:text-primary font-medium">
+                                Formation universitaire
+                                <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                            </a>
+                            <ul class="absolute left-0 top-full w-48 bg-white shadow-lg rounded-md py-2 hidden group-hover:block z-50">
+                                <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">Licence</a></li>
+                                <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">Master</a></li>
+                                <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">Doctorat</a></li>
+                            </ul>
+                        </li>
+                        <li class="group relative">
+                            <a href="#" class="flex items-center py-2 text-gray-700 hover:text-primary font-medium">
+                                Formation professionnelle
+                                <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                            </a>
+                            <ul class="absolute left-0 top-full w-48 bg-white shadow-lg rounded-md py-2 hidden group-hover:block z-50">
+                                <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">Certification</a></li>
+                                <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">Cours du soir</a></li>
+                                <li><a href="court.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">Formation courte</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="longue.html" class="py-2 text-gray-700 hover:text-primary font-medium">Formation entreprise</a>
+                        </li>
+                        <li class="group relative">
+                            <a href="#" class="flex items-center py-2 text-gray-700 hover:text-primary font-medium">
+                                INSI Online
+                                <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                            </a>
+                            <ul class="absolute left-0 top-full w-48 bg-white shadow-lg rounded-md py-2 hidden group-hover:block z-50">
+                                <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">E-learning</a></li>
+                                <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">Webinars</a></li>
+                                <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">Ressources</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="py-2 text-gray-700 hover:text-primary font-medium">Événement</a>
+                        </li>
+                        <li>
+                            <a href="Nos_actualité.html" class="py-2 text-gray-700 hover:text-primary font-medium">Nos actualités</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden bg-white shadow-lg absolute w-full left-0 top-full z-50 hidden">
+                <ul class="py-2">
+                    <li class="border-b border-gray-100">
+                        <button class="mobile-dropdown-toggle w-full text-left px-4 py-3 flex justify-between items-center text-gray-700">
+                            Formation universitaire
+                            <i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                        <ul class="mobile-dropdown-menu hidden bg-gray-50 py-2">
+                            <li><a href="#" class="block px-8 py-2 text-sm text-gray-700 hover:text-primary">Licence</a></li>
+                            <li><a href="#" class="block px-8 py-2 text-sm text-gray-700 hover:text-primary">Master</a></li>
+                            <li><a href="#" class="block px-8 py-2 text-sm text-gray-700 hover:text-primary">Doctorat</a></li>
+                        </ul>
+                    </li>
+                    <li class="border-b border-gray-100">
+                        <button class="mobile-dropdown-toggle w-full text-left px-4 py-3 flex justify-between items-center text-gray-700">
+                            Formation professionnelle
+                            <i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                        <ul class="mobile-dropdown-menu hidden bg-gray-50 py-2">
+                            <li><a href="#" class="block px-8 py-2 text-sm text-gray-700 hover:text-primary">Certification</a></li>
+                            <li><a href="#" class="block px-8 py-2 text-sm text-gray-700 hover:text-primary">Cours du soir</a></li>
+                            <li><a href="#" class="block px-8 py-2 text-sm text-gray-700 hover:text-primary">Formation courte</a></li>
+                        </ul>
+                    </li>
+                    <li class="border-b border-gray-100">
+                        <a href="#" class="block px-4 py-3 text-gray-700 hover:text-primary">Formation entreprise</a>
+                    </li>
+                    <li class="border-b border-gray-100">
+                        <button class="mobile-dropdown-toggle w-full text-left px-4 py-3 flex justify-between items-center text-gray-700">
+                            INSI Online
+                            <i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                        <ul class="mobile-dropdown-menu hidden bg-gray-50 py-2">
+                            <li><a href="#" class="block px-8 py-2 text-sm text-gray-700 hover:text-primary">E-learning</a></li>
+                            <li><a href="#" class="block px-8 py-2 text-sm text-gray-700 hover:text-primary">Webinars</a></li>
+                            <li><a href="#" class="block px-8 py-2 text-sm text-gray-700 hover:text-primary">Ressources</a></li>
+                        </ul>
+                    </li>
+                    <li class="border-b border-gray-100">
+                        <a href="#" class="block px-4 py-3 text-gray-700 hover:text-primary">Événement</a>
+                    </li>
+                    <li>
+                        <a href="#" class="block px-4 py-3 text-gray-700 hover:text-primary">Nos actualités</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+   
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-primary to-secondary text-white py-16 md:py-24 min-h-screen">
+        <div class="container mx-auto px-4 md:px-8 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-8 md:mb-0">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">Institut Supérieur en Informatique</h2>
+                <p class="text-lg md:text-xl mb-6">Formez-vous aux métiers du numérique et devenez un expert en informatique</p>
+                <button class="bg-white text-primary hover:bg-gray-100 font-medium py-2 px-6 rounded-md transition duration-300">
+                    En savoir plus
+                </button>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <img src="/placeholder.svg?height=300&width=400" alt="IT Training" class="max-w-full h-auto rounded-lg shadow-lg">
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="py-12 md:py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl md:text-3xl font-bold text-center mb-2">INSI - Offre de formation</h2>
+            <p class="text-gray-600 text-center mb-10">INSI , propose de formation modulaire, professionnel pour vous aidez à votre insertion professionnel dans le domaine du développement web, administration réseaux et systèmes, intelligence artificielle , data science, data analytics, data visualisation, data engineer, machine learning, deep learning, python et langage R .
+
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Développement -->
+                <div class="card relative overflow-hidden rounded-lg shadow-xl h-[400px] transition-all duration-300">
+                  <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://source.unsplash.com/random/600x400/?code')"></div>
+                  <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
+                  
+                  <div class="relative h-full flex flex-col justify-between p-6 z-10">
+                    <div>
+                      <h2 class="text-2xl font-bold mb-3 text-cyan-400">Développement</h2>
+                      <p class="text-gray-300">Le développeur web s'occupe du développement informatique de sites, applications, plateformes web. Il développe de nouvelles fonctionnalités et/ou maintient les fonctionnalités existantes.</p>
+                    </div>
+                    
+                    <button class="mt-4 self-start px-4 py-2 bg-transparent border border-cyan-400 text-cyan-400 rounded hover:bg-cyan-400 hover:text-black transition fadeInDown duration-300">
+                      En savoir plus
+                    </button>
+                  </div>
+                </div>
+                
+                <!-- Maintenance de réseaux et système -->
+                <div class="card relative overflow-hidden rounded-lg shadow-xl h-[400px] transition-all duration-300">
+                  <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://source.unsplash.com/random/600x400/?network')"></div>
+                  <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
+                  
+                  <div class="relative h-full flex flex-col justify-between p-6 z-10">
+                    <div>
+                      <h2 class="text-2xl font-bold mb-3 text-cyan-400">Maintenance de réseaux et système</h2>
+                      <p class="text-gray-300">L'ingénieur en systèmes et réseaux est chargé d'assurer la maintenance du système informatique afin qu'il fonctionne correctement, ainsi que son amélioration.</p>
+                    </div>
+                    
+                    <button class="mt-4 self-start px-4 py-2 bg-transparent border border-cyan-400 text-cyan-400 rounded hover:bg-cyan-400 hover:text-black transition-colors duration-300">
+                      En savoir plus
+                    </button>
+                  </div>
+                </div>
+                
+                <!-- Intelligence artificielle -->
+                <div class="card relative overflow-hidden rounded-lg shadow-xl h-[400px] transition-all duration-300">
+                  <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://source.unsplash.com/random/600x400/?ai')"></div>
+                  <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
+                  
+                  <div class="relative h-full flex flex-col justify-between p-6 z-10">
+                    <div>
+                      <h2 class="text-2xl font-bold mb-3 text-cyan-400">Intelligence artificielle</h2>
+                      <p class="text-gray-300">L'intelligence artificielle (IA) est entrée dans le courant dominant et a révolutionné notre façon de travailler. Elle est de plus en plus adoptée pour automatiser de nombreux emplois.</p>
+                    </div>
+                    
+                    <button class="mt-4 self-start px-4 py-2 bg-transparent border border-cyan-400 text-cyan-400 rounded hover:bg-cyan-400 hover:text-black transition-colors duration-300">
+                      En savoir plus
+                    </button>
+                  </div>
+                </div>
+                
+                <!-- Machine Learning -->
+                <div class="card relative overflow-hidden rounded-lg shadow-xl h-[400px] transition-all duration-300">
+                  <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://source.unsplash.com/random/600x400/?machine-learning')"></div>
+                  <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
+                  
+                  <div class="relative h-full flex flex-col justify-between p-6 z-10">
+                    <div>
+                      <h2 class="text-2xl font-bold mb-3 text-cyan-400">Machine Learning</h2>
+                      <p class="text-gray-300">Le métier de Machine Learning est centré sur la conception, le développement et le déploiement de systèmes d'apprentissage automatique pour résoudre des problèmes complexes.</p>
+                    </div>
+                    
+                    <button class="mt-4 self-start px-4 py-2 bg-transparent border border-cyan-400 text-cyan-400 rounded hover:bg-cyan-400 hover:text-black transition-colors duration-300">
+                      En savoir plus
+                    </button>
+                  </div>
+                </div>
+                
+                <!-- Data Science -->
+                <div class="card relative overflow-hidden rounded-lg shadow-xl h-[400px] transition-all duration-300">
+                  <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://source.unsplash.com/random/600x400/?data-science')"></div>
+                  <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
+                  
+                  <div class="relative h-full flex flex-col justify-between p-6 z-10">
+                    <div>
+                      <h2 class="text-2xl font-bold mb-3 text-cyan-400">Data Science</h2>
+                      <p class="text-gray-300">La data scientist occupe une place centrale au sein de l'entreprise, car il peut influer la politique grâce à ses analyses et recommandations.</p>
+                    </div>
+                    
+                    <button class="mt-4 self-start px-4 py-2 bg-transparent border border-cyan-400 text-cyan-400 rounded hover:bg-cyan-400 hover:text-black transition-colors duration-300">
+                      En savoir plus
+                    </button>
+                  </div>
+                </div>
+                
+                <!-- Data Analytics -->
+                <div class="card relative overflow-hidden rounded-lg shadow-xl h-[400px] transition-all duration-300">
+                  <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://source.unsplash.com/random/600x400/?analytics')"></div>
+                  <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
+                  
+                  <div class="relative h-full flex flex-col justify-between p-6 z-10">
+                    <div>
+                      <h2 class="text-2xl font-bold mb-3 text-cyan-400">Data Analytics</h2>
+                      <p class="text-gray-300">À l'heure du big data et de l'augmentation croissante de données stratégiques à exploiter par les entreprises, les perspectives d'évolution du poste sont nombreuses.</p>
+                    </div>
+                    
+                    <button class="mt-4 self-start px-4 py-2 bg-transparent border border-cyan-400 text-cyan-400 rounded hover:bg-cyan-400 hover:text-black transition-colors duration-300">
+                      En savoir plus
+                    </button>
+                  </div>
+                </div>
+                
+                <!-- Data Visualization -->
+                <div class="card relative overflow-hidden rounded-lg shadow-xl h-[400px] transition-all duration-300">
+                  <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://source.unsplash.com/random/600x400/?visualization')"></div>
+                  <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
+                  
+                  <div class="relative h-full flex flex-col justify-between p-6 z-10">
+                    <div>
+                      <h2 class="text-2xl font-bold mb-3 text-cyan-400">Data Visualization</h2>
+                      <p class="text-gray-300">Il s'agit d'un profil convoité par les entreprises spécialisées dans la data, les services publics, les start-ups, les entreprises de service numérique.</p>
+                    </div>
+                    
+                    <button class="mt-4 self-start px-4 py-2 bg-transparent border border-cyan-400 text-cyan-400 rounded hover:bg-cyan-400 hover:text-black transition-colors duration-300">
+                      En savoir plus
+                    </button>
+                  </div>
+                </div>
+                
+                <!-- Data Engineer -->
+                <div class="card relative overflow-hidden rounded-lg shadow-xl h-[400px] transition-all duration-300">
+                  <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://source.unsplash.com/random/600x400/?engineer')"></div>
+                  <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
+                  
+                  <div class="relative h-full flex flex-col justify-between p-6 z-10">
+                    <div>
+                      <h2 class="text-2xl font-bold mb-3 text-cyan-400">Data Engineer</h2>
+                      <p class="text-gray-300">Le/la data engineer est un développeur informatique qui a pour mission de mettre en place la collecte et la mise à disposition des données au sein de l'entreprise.</p>
+                    </div>
+                    
+                    <button class="mt-4 self-start px-4 py-2 bg-transparent border border-cyan-400 text-cyan-400 rounded hover:bg-cyan-400 hover:text-black transition-colors duration-300">
+                      En savoir plus
+                    </button>
+                  </div>
+                </div>
+                
+                <!-- Deep Learning -->
+                <div class="card relative overflow-hidden rounded-lg shadow-xl h-[400px] transition-all duration-300">
+                  <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://source.unsplash.com/random/600x400/?deep-learning')"></div>
+                  <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
+                  
+                  <div class="relative h-full flex flex-col justify-between p-6 z-10">
+                    <div>
+                      <h2 class="text-2xl font-bold mb-3 text-cyan-400">Deep Learning</h2>
+                      <p class="text-gray-300">Le rôle d'un ingénieur deep learning est d'être spécialisé en matière de développement et mise en place d'algorithmes d'apprentissage reposant sur les architectures de réseaux de neurones.</p>
+                    </div>
+                    
+                    <button class="mt-4 self-start px-4 py-2 bg-transparent border border-cyan-400 text-cyan-400 rounded hover:bg-cyan-400 hover:text-black transition-colors duration-300">
+                      En savoir plus
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Online Training Section -->
+    <section class="py-12 md:py-16">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4">Formation diplômante en vue d'obtention du BTS</h2>
+                    <p class="text-gray-700 mb-6">Nos formations en ligne vous permettent d'obtenir des certifications reconnues par l'État et les entreprises. Suivez votre parcours à votre rythme avec un accompagnement personnalisé.</p>
+                    <button class="bg-primary hover:bg-primary-dark text-white font-medium py-2 px-6 rounded-md transition duration-300">
+                        Découvrir nos formations
+                    </button>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <img src="/placeholder.svg?height=300&width=400" alt="Online Training" class="max-w-full h-auto rounded-lg shadow-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="py-12 md:py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl md:text-3xl font-bold text-center mb-2">Licence</h2>
+            <p class="text-gray-600 text-center mb-10">Obtenez une licence professionnelle en informatique</p>
+            
+            <div class="bg-white rounded-lg shadow-md p-6 md:p-8">
+                <div class="flex flex-col md:flex-row">
+                    <div class="md:w-2/3 mb-6 md:mb-0 md:pr-8">
+                        <h3 class="text-xl font-bold mb-4 text-primary">Licence en Informatique</h3>
+                        <p class="text-gray-700 mb-4">Notre licence professionnelle en informatique vous prépare aux métiers du numérique avec un programme complet couvrant les aspects théoriques et pratiques.</p>
+                        <p class="text-gray-700 mb-4">La formation est dispensée par des professionnels du secteur et inclut des stages en entreprise pour vous permettre d'acquérir une expérience concrète.</p>
+                        <button class="bg-primary hover:bg-primary-dark text-white font-medium py-2 px-6 rounded-md transition duration-300">
+                            Demander une documentation
+                        </button>
+                    </div>
+                    <div class="md:w-1/3 flex justify-center items-center">
+                        <img src="/placeholder.svg?height=200&width=200" alt="Licence" class="max-w-full h-auto rounded-lg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Master Section -->
+    <section class="py-12 md:py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl md:text-3xl font-bold text-center mb-2">Master</h2>
+            <p class="text-gray-600 text-center mb-10">Perfectionnez vos compétences avec notre master en informatique</p>
+            
+            <div class="bg-white rounded-lg shadow-md p-6 md:p-8">
+                <div class="flex flex-col md:flex-row">
+                    <div class="md:w-1/3 flex justify-center items-center mb-6 md:mb-0">
+                        <img src="/placeholder.svg?height=200&width=200" alt="Master" class="max-w-full h-auto rounded-lg">
+                    </div>
+                    <div class="md:w-2/3 md:pl-8">
+                        <h3 class="text-xl font-bold mb-4 text-primary">Master en Informatique</h3>
+                        <p class="text-gray-700 mb-4">Notre programme de master vous permet de vous spécialiser dans des domaines de pointe comme l'intelligence artificielle, la cybersécurité ou le big data.</p>
+                        <p class="text-gray-700 mb-4">Vous travaillerez sur des projets concrets en collaboration avec des entreprises partenaires et bénéficierez d'un encadrement par des experts reconnus.</p>
+                        <button class="bg-primary hover:bg-primary-dark text-white font-medium py-2 px-6 rounded-md transition duration-300">
+                            Demander une documentation
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <main class="min-h-screen">
+        <div class="container mx-auto px-4 py-8 max-w-7xl">
+          <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Left column - Course information -->
+            <div class="lg:w-2/3">
+              <div class="space-y-6">
+                <section>
+                  <h2 class="text-2xl font-semibold text-gray-800 mb-3">Conditions d'admission</h2>
+                  <p class="text-gray-600">
+                    Le MASTER est ouvert aux candidats titulaires d'un diplôme (Bac+4 ou plus) en Informatique ou équivalent. 
+                    L'admission est prononcée à l'issue de l'examen du dossier du candidat par une commission mixte.
+                  </p>
+                </section>
+        
+                <section>
+                  <h2 class="text-2xl font-semibold text-gray-800 mb-3">Contenu de la formation</h2>
+                  <p class="text-gray-600 mb-4">
+                    Formation universitaire d'une année (incluant stage en entreprise) pour chaque niveau de Master.
+                  </p>
+        
+                  <div class="space-y-6">
+                    <div>
+                      <h3 class="text-xl font-medium text-gray-700 mb-2">Module « Intelligence artificielle et data science » :</h3>
+                      <ul class="list-disc pl-6 space-y-1 text-gray-600">
+                        <li>Mathématiques pour la data science</li>
+                        <li>Statistiques pour la data science</li>
+                        <li>Data Collection</li>
+                        <li>Visualisation, Exploration, Analyse et traitement des données</li>
+                        <li>Machine Learning</li>
+                        <li>Deep Learning</li>
+                        <li>Data Engineering et Langage Scala</li>
+                        <li>DevOps</li>
+                        <li>Langage R</li>
+                        <li>Langage Python</li>
+                      </ul>
+                    </div>
+        
+                    <div>
+                      <h3 class="text-xl font-medium text-gray-700 mb-2">Module « Développement web et mobile » :</h3>
+                      <ul class="list-disc pl-6 space-y-1 text-gray-600">
+                        <li>Développement web front end : MERN, MEVN, MEAN</li>
+                        <li>Développement web back end : symfony, laravel</li>
+                        <li>Développement mobile ios et android : React Native, ionic, flutter, kootlin..</li>
+                        <li>Développement et implémentation intelligence artificielle: Machine learning, Deep learning, data science</li>
+                        <li>Les concepts de base et infrastructures en informatique d'entreprise</li>
+                        <li>Bases de données avancées.</li>
+                        <li>Administration avancée, optimisation (« tuning ») d'un serveur de données relationnelles/ objets »</li>
+                        <li>Datawarehouse, Datamining et CRM »</li>
+                        <li>Pentesting, Ethical Hacking</li>
+                        <li>Sécurité réseaux, systèmes</li>
+                      </ul>
+                    </div>
+        
+                    <div>
+                      <h3 class="text-xl font-medium text-gray-700 mb-2">Module « Serveurs d'applications et environnements de développement » :</h3>
+                      <ul class="list-disc pl-6 space-y-1 text-gray-600">
+                        <li>Serveurs d'applications (y compris mobile) et environnement de développement J2EE »</li>
+                        <li>Java avancé (EJB, JSP, J2EE, Java embarqué, java Multimedia,..), Apache jdevelopper, framework STRUTS, plateforme J2EE et serveur d'applications sans fils</li>
+                        <li>Architecture N-tier et middleware objet : XML et services WEB (SOAP,UDDI ,WSDL)</li>
+                        <li>Serveurs d'applications (y compris mobile) et environnement de développement .NET</li>
+                      </ul>
+                    </div>
+        
+                    <div>
+                      <h3 class="text-xl font-medium text-gray-700 mb-2">Module «Systèmes d'Information »</h3>
+                      <ul class="list-disc pl-6 space-y-1 text-gray-600">
+                        <li>Développement d'applications mobiles</li>
+                        <li>Environnement de développement sur ANDROID</li>
+                        <li>Environnement de développement sur IPhone/IOS</li>
+                      </ul>
+                    </div>
+        
+                    <div>
+                      <h3 class="text-xl font-medium text-gray-700 mb-2">Module Conception avancée, gestion de projets et entreprenariat</h3>
+                      <ul class="list-disc pl-6 space-y-1 text-gray-600">
+                        <li>Conception avancée autour d'UML et Design pattern</li>
+                        <li>Concepts progiciels et intégration d'applications : ERP et EAI</li>
+                        <li>Gestion de projets et Conception AGILE</li>
+                      </ul>
+                    </div>
+                  </div>
+                </section>
+        
+                <section>
+                  <h2 class="text-2xl font-semibold text-gray-800 mb-3">Enseignants</h2>
+                  <p class="text-gray-600">
+                    La formation est assurée par des enseignants de l'Université INSI.
+                  </p>
+                </section>
+              </div>
+            </div>
+            
+           <!-- Right column - Facebook feed -->
+        <div class="lg:w-1/3">
+            <div id="facebook-feed" class="facebook-feed bg-white rounded-lg shadow-md p-6 transition-all duration-300 transform hover:shadow-lg">
+              <div class="facebook-feed-header mb-6">
+                <h2 class="facebook-feed-title text-2xl font-bold text-gray-800">Nos actualités facebook</h2>
+              </div>
+              
+              <div id="facebook-feed-content" class="facebook-feed-content space-y-6">
+                <!-- Posts will be dynamically added here -->
+              </div>
+  
+              <button id="load-more" class="mt-6 w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition-colors">
+                Charger plus
+              </button>
+            </div>
+          </div>
+        </div>
+        
+      
+    <script>
+      const posts = [
+        {
+          id: 1,
+          author: "Institut National Supérieur d'Informatique",
+          time: "Il y a 2 semaines",
+          content: "Cloudflight Coding Contest Antananarivo INSI",
+          details: ["Antananarivo, Analamanga", "2 personnes y ont participé"],
+          image: "https://via.placeholder.com/400x200",
+          likes: 15
+        },
+        {
+          id: 2,
+          author: "Institut National Supérieur d'Informatique",
+          time: "Il y a 3 semaines",
+          content: "Révélez votre potentiel demain au Cloudflight Coding Contest ! C'est votre moment de briller et de montrer au monde ce que vous savez faire ! Le 25 octobre 2024, rejoignez-nous à l'INSI à Antananarivo pour un défi international de codage exceptionnel.",
+          details: [
+            "🏆 Deux catégories adaptées à tous les niveaux :",
+            "- Rookie : Pour les débutants et intermédiaires",
+            "- Pro : Pour les codeurs expérimentés"
+          ],
+          image: "https://via.placeholder.com/400x200",
+          likes: 32
+        },
+        {
+          id: 3,
+          author: "Institut National Supérieur d'Informatique",
+          time: "Il y a 1 mois",
+          content: "Retour sur notre dernier hackathon : une expérience inoubliable ! Merci à tous les participants pour leur créativité et leur persévérance. Vous avez relevé des défis incroyables et proposé des solutions innovantes. Bravo à tous !",
+          details: ["50 participants, 10 projets, 24 heures de code non-stop"],
+          image: "https://via.placeholder.com/400x200",
+          likes: 48
+        }
+      ];
+  
+      let currentPosts = 0;
+      const postsPerLoad = 2;
+  
+      function createPostElement(post) {
+        const postElement = document.createElement('div');
+        postElement.className = 'facebook-post border-b border-gray-200 pb-6 last:border-0 transition-all duration-300';
+        postElement.setAttribute('data-post-id', post.id);
+  
+        postElement.innerHTML = `
+          <div class="facebook-post-header flex items-center mb-3">
+            <div class="facebook-post-avatar bg-blue-600 text-white rounded-full w-10 h-10 flex items-center justify-center mr-3">
+              <span class="facebook-post-avatar-text text-sm font-bold">INSI</span>
+            </div>
+            <div class="facebook-post-info">
+              <h3 class="facebook-post-author text-md font-semibold text-gray-800">${post.author}</h3>
+              <p class="facebook-post-time text-sm text-gray-500">${post.time}</p>
+            </div>
+          </div>
+          
+          <div class="relative w-full h-48 mb-3 overflow-hidden rounded-lg">
+            <img 
+              src="${post.image}" 
+              alt="${post.content.split(' ').slice(0, 3).join(' ')}" 
+              class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+            />
+          </div>
+          
+          <p class="facebook-post-content text-gray-700 mb-2">${post.content}</p>
+          <div class="facebook-post-details hidden">
+            ${post.details.map(detail => `<p class="text-sm text-gray-600">${detail}</p>`).join('')}
+          </div>
+          <button class="text-blue-600 hover:text-blue-800 text-sm mt-2 expand-post">Voir plus</button>
+          <div class="flex items-center mt-4">
+            <button class="like-button flex items-center text-gray-600 hover:text-blue-600">
+              <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"></path>
+              </svg>
+              <span class="like-count">${post.likes}</span>
+            </button>
+          </div>
+        `;
+  
+        return postElement;
+      }
+  
+      function loadMorePosts() {
+        const feedContent = document.getElementById('facebook-feed-content');
+        const endIndex = Math.min(currentPosts + postsPerLoad, posts.length);
+  
+        for (let i = currentPosts; i < endIndex; i++) {
+          const postElement = createPostElement(posts[i]);
+          feedContent.appendChild(postElement);
+        }
+  
+        currentPosts = endIndex;
+  
+        if (currentPosts >= posts.length) {
+          document.getElementById('load-more').style.display = 'none';
+        }
+      }
+  
+      document.getElementById('load-more').addEventListener('click', loadMorePosts);
+  
+      document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('expand-post')) {
+          const post = e.target.closest('.facebook-post');
+          const details = post.querySelector('.facebook-post-details');
+          const expandButton = post.querySelector('.expand-post');
+  
+          if (details.classList.contains('hidden')) {
+            details.classList.remove('hidden');
+            expandButton.textContent = 'Voir moins';
+          } else {
+            details.classList.add('hidden');
+            expandButton.textContent = 'Voir plus';
+          }
+        }
+  
+        if (e.target.closest('.like-button')) {
+          const likeButton = e.target.closest('.like-button');
+          const likeCount = likeButton.querySelector('.like-count');
+          let currentLikes = parseInt(likeCount.textContent);
+          likeCount.textContent = currentLikes + 1;
+          likeButton.classList.add('text-blue-600');
+        }
+      });
+  
+      // Initial load
+      loadMorePosts();
+  
+      // Animation effect when scrolling
+      function handleScroll() {
+        const feedElement = document.querySelector('.facebook-feed');
+        if (feedElement) {
+          const rect = feedElement.getBoundingClientRect();
+          if (rect.top < window.innerHeight && rect.bottom > 0) {
+            feedElement.classList.add('animate-fade-in');
+          }
+        }
+      }
+      
+      window.addEventListener('scroll', handleScroll);
+      // Check on initial load
+      document.addEventListener('DOMContentLoaded', handleScroll);
+  
+      // Handle navigation click events
+      document.querySelectorAll('.nav-item').forEach(item => {
+        item.addEventListener('click', function() {
+          // Reset all nav items
+          document.querySelectorAll('.nav-item').forEach(navItem => {
+            navItem.classList.remove('bg-blue-600', 'text-white');
+            navItem.classList.add('text-gray-700', 'hover:bg-gray-100');
+          });
+          
+          // Set active state
+          this.classList.remove('text-gray-700', 'hover:bg-gray-100');
+          this.classList.add('bg-blue-600', 'text-white');
+        });
+      });
+    </script>
+
+
+
+  <!-- Top border -->
+  <div class=" mx-auto h-1 bg-blue-900 mb-4 mt-16 max-w-7xl"></div>
+  
+  <!-- Main content card -->
+  <div class="max-w-12xl mx-auto bg-white rounded-lg shadow-xl p-6 mb-8 ">
+    <!-- Introduction -->
+    <div class="mb-8">
+      <p class="text-gray-800 text-sm leading-relaxed">
+        La formation chez INSI. Il y a la Formation en présentielle et la formation à distance ou e-learning qui est composée de ces trois types de
+        formation à savoir : La formation professionnelle, Formation universitaire pour l'obtention de diplôme de technicien supérieur (DTS) ou
+        formation académique pour l'obtention de diplôme de Licence, Master.
+      </p>
+      
+      <p class="text-gray-800 text-sm mt-4 leading-relaxed">
+        Pour vous inscrire aux formation professionnel, formation universitaire en vue de l'obtention de DTS ou Licence ou Master envoyez-nous ici OU
+        au <a href="#" class="text-blue-600 hover:underline">contact@insi.mg</a> OU à notre siège votre dossier de candidature comme dépôt de dossier :
+      </p>
+      
+      <ul class="mt-2 space-y-1">
+        <li class="flex items-start">
+          <span class="text-orange-500 mr-2">•</span>
+          <span class="text-gray-800 text-sm">4 photos récentes.</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-orange-500 mr-2">•</span>
+          <span class="text-gray-800 text-sm">1 certificat de résidence de moins de 3 mois.</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-orange-500 mr-2">•</span>
+          <span class="text-gray-800 text-sm">1 acte de naissance (pour les mineurs) OU photocopie CIN certifiée (pour les majeurs).</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-orange-500 mr-2">•</span>
+          <span class="text-gray-800 text-sm">1 photocopie des bulletins de notes des trois trimestres de la Terminale si avant le BACC ou relevé de notes du BACC si après BACC.</span>
+        </li>
+      </ul>
+    </div>
+    
+    <!-- CFP Section -->
+    <div class="mb-8">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Pour celui de la CFP</h2>
+      <ul class="space-y-1">
+        <li class="flex items-start">
+          <span class="text-orange-500 mr-2">•</span>
+          <span class="text-gray-800 text-sm">
+            1 fiche de renseignement à télécharger sur <a href="https://bit.ly/3MsqQN7" class="text-blue-600 hover:underline">https://bit.ly/3MsqQN7</a> ou à remplir au bureau.
+          </span>
+        </li>
+      </ul>
+    </div>
+    
+    <!-- DTS Section -->
+    <div class="mb-8">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Pour celui de la DTS</h2>
+      <p class="text-gray-800 text-sm mb-2">Par sélection de dossier</p>
+      <ul class="space-y-1">
+        <li class="flex items-start">
+          <span class="text-orange-500 mr-2">•</span>
+          <span class="text-gray-800 text-sm">
+            1 fiche de renseignement à télécharger sur <a href="https://bit.ly/d40XphD" class="text-blue-600 hover:underline">https://bit.ly/d40XphD</a> ou à remplir au bureau.
+          </span>
+        </li>
+      </ul>
+    </div>
+    
+    <!-- L1 Section -->
+    <div class="mb-8">
+      <h2 class="text-xl font-bold text-teal-700 mb-4">Les Listes des dossiers pour L1 :</h2>
+      
+      <p class="text-gray-800 text-sm mb-2">
+        <span class="text-yellow-500 mr-1">📂</span> Vous êtes prêts à faire de votre carrière une priorité et vous choisissez l'informatique ? Vous pouvez dès maintenant déposer votre dossier à
+        l'INSI University. Que ce soit en parcours
+      </p>
+      
+      <ul class="mb-4">
+        <li class="flex items-start">
+          <span class="text-blue-500 mr-2">•</span>
+          <span class="text-gray-800 text-sm">Génie Logiciel</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-blue-500 mr-2">•</span>
+          <span class="text-gray-800 text-sm">Administration réseaux systèmes et bases de données</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-blue-500 mr-2">•</span>
+          <span class="text-gray-800 text-sm">Intelligence artificielle et data.</span>
+        </li>
+      </ul>
+      
+      <p class="text-gray-800 text-sm mb-1">Pour faciliter votre dossier de candidature, vous pouvez le déposer votre dossier.</p>
+      <p class="text-gray-800 text-sm mb-2">Pour vous candidater, veuillez trouver ci-joint les dossiers à fournir</p>
+      
+      <ul class="space-y-1 mb-4">
+        <li class="flex items-start">
+          <span class="text-orange-500 mr-2">•</span>
+          <span class="text-gray-800 text-sm">4 photos récentes</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-orange-500 mr-2">•</span>
+          <span class="text-gray-800 text-sm">1 certificat de résidence de moins de 3 mois</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-orange-500 mr-2">•</span>
+          <span class="text-gray-800 text-sm">1 acte de naissance (pour les mineurs) OU photocopie CIN certifiée (pour les majeurs)</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-orange-500 mr-2">•</span>
+          <span class="text-gray-800 text-sm">1 relevé de notes du BACC ou attestation de réussite au baccalauréat</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-orange-500 mr-2">•</span>
+          <span class="text-gray-800 text-sm">Droit de dépôt de dossier par Mvola ou orange money ou sur place dans notre siège : 30 000 MGA</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-orange-500 mr-2">•</span>
+          <span class="text-gray-800 text-sm">
+            1 fiche de renseignement à télécharger sur <a href="https://bit.ly/3Tk8Tpi" class="text-blue-600 hover:underline">https://bit.ly/3Tk8Tpi</a> ou à remplir au bureau.
+          </span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-orange-500 mr-2">•</span>
+          <span class="text-gray-800 text-sm">1 CHEMISE CARTONNEE VERT</span>
+        </li>
+      </ul>
+      
+      <div class="text-gray-800 text-sm space-y-1">
+        <p>Droit d'inscription 300 000 ar</p>
+        <p>Ecolage : 180 000 ar / mois</p>
+        <p>durée : 10 mois</p>
+      </div>
+    </div>
+    
+    <!-- L2 Section -->
+    <div class="mb-8">
+      <h2 class="text-xl font-bold text-teal-700 mb-4">Les Listes des dossiers pour L2:</h2>
+      
+      <ul class="space-y-1 mb-4">
+        <li class="flex items-start">
+          <span class="text-orange-500 mr-2">•</span>
+          <span class="text-gray-800 text-sm">4 photos d'identité récentes</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-orange-500 mr-2">•</span>
+          <span class="text-gray-800 text-sm">1 photocopie de diplôme de baccalauréat</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-orange-500 mr-2">•</span>
+          <span class="text-gray-800 text-sm">1 bulletin de naissance (pour les mineurs) ou photocopies CIN certifiées (pour les majeurs)</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-orange-500 mr-2">•</span>
+          <span class="text-gray-800 text-sm">1 Certificat de résidence (Moins de 3 Mois )</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-orange-500 mr-2">•</span>
+          <span class="text-gray-800 text-sm">Frais de dossier : 30 000 ar</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-orange-500 mr-2">•</span>
+          <span class="text-gray-800 text-sm">Photocopie attestation LICENCE L1 (DTS/WEB/RS)</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-orange-500 mr-2">•</span>
+          <span class="text-gray-800 text-sm">et relevé de note L1</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-orange-500 mr-2">•</span>
+          <span class="text-gray-800 text-sm">Chemise cartonnée rouge</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-orange-500 mr-2">•</span>
+          <span class="text-gray-800 text-sm">
+            1 fiche de renseignement à télécharger sur <a href="https://bit.ly/3Xhb7aJ" class="text-blue-600 hover:underline">https://bit.ly/3Xhb7aJ</a> ou à remplir au bureau.
+          </span>
+        </li>
+      </ul>
+    </div>
+    
+    <!-- Academic License Section -->
+    <div class="mb-8">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Pour celui de la formation Académique Licence</h2>
+      
+      <ul class="space-y-1 mb-2">
+        <li class="flex items-start">
+          <span class="text-orange-500 mr-2">•</span>
+          <span class="text-gray-800 text-sm">
+            1 fiche de renseignement à télécharger sur <a href="https://bit.ly/3Tk8Tpi" class="text-blue-600 hover:underline">https://bit.ly/3Tk8Tpi</a> ou à remplir au bureau.
+          </span>
+        </li>
+      </ul>
+      <p class="text-gray-800 text-sm">Pour celui de licence L1, il y aura un test de niveau.</p>
+    </div>
+    
+    <!-- Academic Master Section -->
+    <div class="mb-8">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Pour celui de la formation Académique Master</h2>
+      
+      <ul class="space-y-1">
+        <li class="flex items-start">
+          <span class="text-orange-500 mr-2">•</span>
+          <span class="text-gray-800 text-sm">
+            1 fiche de renseignement à télécharger sur <a href="https://bit.ly/4e8KKhD" class="text-blue-600 hover:underline">https://bit.ly/4e8KKhD</a> ou à remplir au bureau.
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  <!-- Why Choose Us Section -->
+  <div class="max-w-12xl mx-auto mb-8">
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="bg-gray-100 rounded-lg overflow-hidden">
+        <img src="https://via.placeholder.com/600x400" alt="Laptop with code" class="w-full h-48 object-cover object-center">
+      </div>
+      <div class="flex flex-col justify-center">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">Pourquoi sommes-nous différents ?</h2>
+        
+        <div class="space-y-4">
+          <div class="flex items-center">
+            <h3 class="text-xl font-semibold text-teal-600">Formations d'excellence</h3>
+          </div>
+          <div class="flex items-center">
+            <h3 class="text-xl font-semibold text-teal-600">Equipe compétent</h3>
+          </div>
+          <div class="flex items-center">
+            <h3 class="text-xl font-semibold text-teal-600">Expérimenté</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Header Section -->
+  <section class="bg-[#7A8678] text-white py-16 px-4 text-center">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-2xl md:text-3xl font-medium mb-6">
+        Institut National Supérieur d'Informatique ( INSI) est un établissement privée spécialisée en informatique, intelligence artificielle, data science et dans le domaine de l'IT à Madagascar.
+      </h1>
+      <p class="text-sm md:text-base">
+        Que vous cherchiez une formation en continu, en alternance, que vous soyez étudiant ou en reconversion, nous avons la réponse pour vous !
+      </p>
+    </div>
+  </section>
+
+  <!-- Training Projects Section -->
+  <section class="py-12 px-4">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-2xl md:text-3xl text-center font-bold text-[#0F3460] mb-12">
+        Projet de fin de formation pour la formation professionnelle en CDA et CDS
+      </h2>
+
+      <!-- Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <!-- Card 1 -->
+        <div class="bg-gray-50 rounded-lg shadow-md p-6 flex flex-col items-center text-center">
+          <h3 class="text-xl font-bold text-[#0F8B8D] mb-4">Sujet01</h3>
+          <p class="uppercase font-bold mb-2">MARKETING</p>
+          <div class="text-sm mb-6">
+            <p>Campagne de marketing</p>
+            <p>Segmentation de la clientèle</p>
+          </div>
+          <button class="bg-[#0F3460] text-white text-sm px-4 py-1 rounded">
+            Voir plus
+          </button>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bg-gray-50 rounded-lg shadow-md p-6 flex flex-col items-center text-center">
+          <h3 class="text-xl font-bold text-[#0F8B8D] mb-4">Sujet02</h3>
+          <p class="uppercase font-bold mb-2">BFSI</p>
+          <div class="text-sm mb-6">
+            <p>Prévision des défauts de</p>
+            <p>paiement</p>
+          </div>
+          <button class="bg-[#0F3460] text-white text-sm px-4 py-1 rounded">
+            Voir plus
+          </button>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-gray-50 rounded-lg shadow-md p-6 flex flex-col items-center text-center">
+          <h3 class="text-xl font-bold text-[#0F8B8D] mb-4">Sujet03</h3>
+          <p class="uppercase font-bold mb-2">SANTÉ</p>
+          <div class="text-sm mb-6">
+            <p>Detection du paludisme</p>
+          </div>
+          <button class="bg-[#0F3460] text-white text-sm px-4 py-1 rounded">
+            Voir plus
+          </button>
+        </div>
+      </div>
+
+      <!-- Pagination Dots -->
+      <div class="flex justify-center gap-1 mb-8">
+        <div class="h-2 w-2 rounded-full bg-[#0F3460]"></div>
+        <div class="h-2 w-2 rounded-full bg-gray-300"></div>
+        <div class="h-2 w-2 rounded-full bg-gray-300"></div>
+        <div class="h-2 w-2 rounded-full bg-gray-300"></div>
+        <div class="h-2 w-2 rounded-full bg-gray-300"></div>
+        <div class="h-2 w-2 rounded-full bg-gray-300"></div>
+        <div class="h-2 w-2 rounded-full bg-gray-300"></div>
+        <div class="h-2 w-2 rounded-full bg-gray-300"></div>
+        <div class="h-2 w-2 rounded-full bg-gray-300"></div>
+        <div class="h-2 w-2 rounded-full bg-gray-300"></div>
+        <div class="h-2 w-2 rounded-full bg-gray-300"></div>
+        <div class="h-2 w-2 rounded-full bg-gray-300"></div>
+      </div>
+
+      <!-- Divider -->
+      <div class="border-t border-gray-300 my-8 max-w-md mx-auto"></div>
+    </div>
+  </section>
+
+  <!-- Specializations Section -->
+  <section class="py-8 px-4">
+    <div class="max-w-6xl mx-auto">
+      <!-- First Row -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <!-- Génie Logiciel -->
+        <div class="flex flex-col items-center text-center">
+          <div class="bg-gray-100 rounded-full p-4 mb-4">
+            <div class="w-16 h-16 flex items-center justify-center">
+              <img src="https://via.placeholder.com/64" alt="Génie Logiciel" width="64" height="64" />
+            </div>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Génie Logiciel</h3>
+          <p class="text-sm">
+            Concevoit des logiciels, souvent à la demande d'un client.
+          </p>
+        </div>
+
+        <!-- Intégration web et développement -->
+        <div class="flex flex-col items-center text-center">
+          <div class="bg-gray-100 rounded-full p-4 mb-4">
+            <div class="w-16 h-16 flex items-center justify-center">
+              <img src="https://via.placeholder.com/64" alt="Intégration web" width="64" height="64" />
+            </div>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Intégration web et développement</h3>
+          <p class="text-sm">
+            Maîtrise des nouvelles techniques du Web 2.0 à web3.0 et du développement Front-end, Back-end, nous les API.
+          </p>
+        </div>
+
+        <!-- Webmarketing -->
+        <div class="flex flex-col items-center text-center">
+          <div class="bg-gray-100 rounded-full p-4 mb-4">
+            <div class="w-16 h-16 flex items-center justify-center">
+              <img src="https://via.placeholder.com/64" alt="Webmarketing" width="64" height="64" />
+            </div>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Webmarketing et Communication digitale</h3>
+          <p class="text-sm">
+            Communication et web marketing digitale à la pointe du métier du web.
+          </p>
+        </div>
+      </div>
+
+      <!-- Second Row -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <!-- Administration Réseaux -->
+        <div class="flex flex-col items-center text-center">
+          <div class="bg-gray-100 rounded-full p-4 mb-4">
+            <div class="w-16 h-16 flex items-center justify-center">
+              <img src="https://via.placeholder.com/64" alt="Administration Réseaux" width="64" height="64" />
+            </div>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Administration Réseaux Systèmes et base de données</h3>
+          <p class="text-sm">
+            Adlabore, optimise et supervise une ou plusieurs bases d'information internes à une entreprise.
+          </p>
+        </div>
+
+        <!-- Sécurité Réseaux -->
+        <div class="flex flex-col items-center text-center">
+          <div class="bg-gray-100 rounded-full p-4 mb-4">
+            <div class="w-16 h-16 flex items-center justify-center">
+              <img src="https://via.placeholder.com/64" alt="Sécurité Réseaux" width="64" height="64" />
+            </div>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Sécurité Réseaux et Hacking</h3>
+          <p class="text-sm">
+            La sécurité du réseau protège vos systèmes contre les logiciels malveillants/rançongiciels, les attaques par déni de service distribué (DDoS), les intrusions dans le réseau, etc.
+          </p>
+        </div>
+
+        <!-- Intelligence artificielle -->
+        <div class="flex flex-col items-center text-center">
+          <div class="bg-gray-100 rounded-full p-4 mb-4">
+            <div class="w-16 h-16 flex items-center justify-center">
+              <img src="https://via.placeholder.com/64" alt="Intelligence artificielle" width="64" height="64" />
+            </div>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Intelligence artificielle et Data science</h3>
+          <p class="text-sm">
+            L'axe Science des données et intelligence artificielle s'intéresse aux fondations du management et de l'analyse des données sous toutes leurs formes (massives, complexes, hétérogènes, incertaines, etc.)
+          </p>
+        </div>
+      </div>
+
+      <!-- Third Row -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <!-- Data Analytics -->
+        <div class="flex flex-col items-center text-center">
+          <div class="bg-gray-100 rounded-full p-4 mb-4">
+            <div class="w-16 h-16 flex items-center justify-center">
+              <img src="https://via.placeholder.com/64" alt="Data Analytics" width="64" height="64" />
+            </div>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Data Analytics</h3>
+          <p class="text-sm">
+            L'analyse des données est une compétence suprême pour les grandes entreprises
+          </p>
+        </div>
+
+        <!-- Data Visualization -->
+        <div class="flex flex-col items-center text-center">
+          <div class="bg-gray-100 rounded-full p-4 mb-4">
+            <div class="w-16 h-16 flex items-center justify-center">
+              <img src="https://via.placeholder.com/64" alt="Data Visualization" width="64" height="64" />
+            </div>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Data Visualization</h3>
+          <p class="text-sm">
+            Savoir mettre en œuvre différentes techniques de visualisation graphique et de mise en récit pour valoriser les données
+          </p>
+        </div>
+
+        <!-- Deep learning -->
+        <div class="flex flex-col items-center text-center">
+          <div class="bg-gray-100 rounded-full p-4 mb-4">
+            <div class="w-16 h-16 flex items-center justify-center">
+              <img src="https://via.placeholder.com/64" alt="Deep learning" width="64" height="64" />
+            </div>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Deep learning</h3>
+          <p class="text-sm">
+            L'apprentissage profond est l'une des compétences les plus convoitées dans l'industrie technologique. Ce cours couvre les algorithmes populaires de Deep Learning : Réseaux convolutifs, BatchNorm, RNNs, etc.
+          </p>
+        </div>
+      </div>
+
+      <!-- Fourth Row -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <!-- Machine Learning -->
+        <div class="flex flex-col items-center text-center">
+          <div class="bg-gray-100 rounded-full p-4 mb-4">
+            <div class="w-16 h-16 flex items-center justify-center">
+              <img src="https://via.placeholder.com/64" alt="Machine Learning" width="64" height="64" />
+            </div>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Machine Learning</h3>
+          <p class="text-sm">
+            outils comme R, Python, Tableau, Machine Learning et MinTab.
+          </p>
+        </div>
+
+        <!-- Data Engineer -->
+        <div class="flex flex-col items-center text-center">
+          <div class="bg-gray-100 rounded-full p-4 mb-4">
+            <div class="w-16 h-16 flex items-center justify-center">
+              <img src="https://via.placeholder.com/64" alt="Data Engineer" width="64" height="64" />
+            </div>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Data Engineer</h3>
+          <p class="text-sm">
+            collecte, de stockage et d'analyse de données à grande échelle.
+          </p>
+        </div>
+
+        <!-- Python -->
+        <div class="flex flex-col items-center text-center">
+          <div class="bg-gray-100 rounded-full p-4 mb-4">
+            <div class="w-16 h-16 flex items-center justify-center">
+              <img src="https://via.placeholder.com/64" alt="Python" width="64" height="64" />
+            </div>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Python</h3>
+          <p class="text-sm">
+            adapté à un problème spécifique.
+          </p>
+        </div>
+      </div>
+
+      <!-- Fifth Row -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <!-- Langage R -->
+        <div class="flex flex-col items-center text-center">
+          <div class="bg-gray-100 rounded-full p-4 mb-4">
+            <div class="w-16 h-16 flex items-center justify-center">
+              <img src="https://via.placeholder.com/64" alt="Langage R" width="64" height="64" />
+            </div>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Langage R</h3>
+          <p class="text-sm">
+            Le langage Rest un ensemble parfait qui vous permet d'apprendre l'ensemble du cycle de vie des données et toutes les méthodes pour y parvenir.
+          </p>
+        </div>
+
+        <!-- MLops -->
+        <div class="flex flex-col items-center text-center">
+          <div class="bg-gray-100 rounded-full p-4 mb-4">
+            <div class="w-16 h-16 flex items-center justify-center">
+              <img src="https://via.placeholder.com/64" alt="MLops" width="64" height="64" />
+            </div>
+          </div>
+          <h3 class="text-lg font-bold mb-2">MLops</h3>
+          <p class="text-sm">
+            MLOps ou MLOps est un ensemble de pratiques qui vise à déployer et maintenir des modèles de machine learning en production de manière fiable et efficace.
+          </p>
+        </div>
+
+        <!-- Docker -->
+        <div class="flex flex-col items-center text-center">
+          <div class="bg-gray-100 rounded-full p-4 mb-4">
+            <div class="w-16 h-16 flex items-center justify-center">
+              <img src="https://via.placeholder.com/64" alt="Docker" width="64" height="64" />
+            </div>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Docker</h3>
+          <p class="text-sm">
+            Les développeurs sont guidés par des recommandations communautés là où ils travaillent, exploitant les données collectées à partir d'un large éventail d'intégrations.
+          </p>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="border-t border-gray-300 my-8 max-w-md mx-auto"></div>
+    </div>
+  </section>
+
+    <!-- Mobile Menu (Hidden by default) -->
+    <div id="mobile-menu" class="fixed inset-0 bg-gray-900 bg-opacity-90 z-50 hidden">
+        <div class="flex justify-end p-4">
+            <button id="close-menu" class="text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <nav class="flex flex-col items-center space-y-6 mt-16">
+            <a href="#" class="text-white text-xl font-medium">Accueil</a>
+            <a href="#" class="text-white text-xl font-medium">Formations</a>
+            <a href="#" class="text-white text-xl font-medium">Certifications</a>
+            <a href="#" class="text-white text-xl font-medium">À propos</a>
+            <a href="#" class="text-white text-xl font-medium">Contact</a>
+        </nav>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuButton = document.querySelector('button.md\\:hidden');
+            const closeButton = document.getElementById('close-menu');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            menuButton.addEventListener('click', function() {
+                mobileMenu.classList.remove('hidden');
+            });
+            
+            closeButton.addEventListener('click', function() {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+    <!-- Footer -->
+    <footer class="bg-secondary py-12 mt-auto">
+      <div class="container mx-auto px-4">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <!-- Left Section -->
+              <div>
+                  <h2 class="text-xl font-semibold text-gray-800 mb-4">Nos informations</h2>
+                  <div class="flex items-start mb-3 text-gray-600">
+                      <i class="fas fa-map-marker-alt w-5 mt-1 mr-3 text-primary"></i>
+                      <span>LOT VF32 TER<br>ANKAZOTOKANA</span>
+                  </div>
+                  <div class="flex items-start mb-3 text-gray-600">
+                      <i class="fas fa-phone w-5 mt-1 mr-3 text-primary"></i>
+                      <div class="flex flex-col">
+                          <span>+261 38 34 563 78</span>
+                          <span>+261 34 72 896 32</span>
+                      </div>
+                  </div>
+                  <div class="flex items-start mb-3 text-gray-600">
+                      <i class="fas fa-envelope w-5 mt-1 mr-3 text-primary"></i>
+                      <a href="mailto:contact@insi.mg" class="hover:text-primary">contact@insi.mg</a>
+                  </div>
+              </div>
+
+              <!-- Center Section -->
+              <div class="flex flex-col items-center text-center">
+                  <div class="logo-container h-24 w-24 md:h-28 md:w-28 mb-4">
+                      <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Capture_d_%C3%A9cran_2025-03-25_113510-removebg-preview-GOtROsl8wquhfZkDvQFDB6b9s2VXS0.png" alt="INSI Logo" class="logo-img">
+                  </div>
+                  <div class="flex space-x-4 mb-4">
+                      <a href="#" class="bg-primary hover:bg-primary/80 text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors">
+                          <i class="fab fa-facebook-f"></i>
+                      </a>
+                      <a href="#" class="bg-primary hover:bg-primary/80 text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors">
+                          <i class="fab fa-youtube"></i>
+                      </a>
+                      <a href="#" class="bg-primary hover:bg-primary/80 text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors">
+                          <i class="fab fa-linkedin-in"></i>
+                      </a>
+                  </div>
+                  <div class="text-gray-600 text-sm">
+                      Copyright © INSI 2025
+                  </div>
+              </div>
+
+              <!-- Right Section -->
+              <div class="md:text-right">
+                  <h2 class="text-xl font-semibold text-gray-800 mb-4">Nous connaître</h2>
+                  <ul class="space-y-2">
+                      <li><a href="#" class="text-gray-600 hover:text-primary">Je candidate</a></li>
+                      <li><a href="#" class="text-gray-600 hover:text-primary">Contact</a></li>
+                      <li><a href="#" class="text-gray-600 hover:text-primary">Qui sommes-nous</a></li>
+                      <li><a href="#" class="text-gray-600 hover:text-primary">Partenariat</a></li>
+                      <li><a href="rejoindre.html" class="text-gray-600 hover:text-primary">Rejoindre l'institut</a></li>
+                  </ul>
+                  <div class="inline-flex items-center mt-4 border border-gray-300 rounded px-3 py-1 cursor-pointer hover:bg-gray-100">
+                      <img src="https://via.placeholder.com/20" alt="French Flag" class="w-5 h-5 mr-2">
+                      <span class="text-gray-600 mr-2">French</span>
+                      <i class="fas fa-chevron-down text-xs text-gray-500"></i>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </footer>
+
+  <script>
+      // Mobile menu toggle
+      document.getElementById('menu-toggle').addEventListener('click', function() {
+          const mobileMenu = document.getElementById('mobile-menu');
+          mobileMenu.classList.toggle('hidden');
+      });
+
+      // Mobile dropdown toggles
+      document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
+          toggle.addEventListener('click', function() {
+              const menu = this.nextElementSibling;
+              menu.classList.toggle('hidden');
+              const icon = this.querySelector('i');
+              icon.classList.toggle('fa-chevron-down');
+              icon.classList.toggle('fa-chevron-up');
+          });
+      });
+  </script>
+</body>
+</html>
+

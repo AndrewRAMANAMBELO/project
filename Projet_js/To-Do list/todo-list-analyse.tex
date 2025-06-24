@@ -1,0 +1,437 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\title{Analyse d'une Application To Do List}
+\author{Documentation Technique}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+Ce document présente une analyse détaillée d'une application web de liste de tâches (To Do List). L'application permet aux utilisateurs d'ajouter des tâches, de les marquer comme terminées et de les supprimer. L'application est composée de trois fichiers principaux : un fichier HTML (index.html), un fichier JavaScript (script.js) et un fichier CSS (style.css).
+
+\section{Structure de l'application}
+L'application suit une architecture simple basée sur le DOM et les événements JavaScript. Elle permet aux utilisateurs de :
+\begin{itemize}
+    \item Ajouter de nouvelles tâches à la liste
+    \item Marquer des tâches comme terminées en cochant une case
+    \item Supprimer des tâches de la liste
+\end{itemize}
+
+\section{Analyse du code HTML}
+Le fichier HTML fournit la structure de base de l'application :
+
+\begin{lstlisting}[language=HTML]
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>To do list</h1>
+    <form>
+        <label for="item">Entrez une action</label>
+        <input id="item" type="text" placeholder="nouvelle action">
+        <button type="submit">Ajouter la tâche</button>
+    </form>
+    <ul class="liste"></ul>
+
+    <script src="script.js"></script>
+</body>
+</html>
+\end{lstlisting}
+
+Les éléments clés sont :
+\begin{itemize}
+    \item Un titre principal
+    \item Un formulaire avec un champ de saisie et un bouton pour ajouter des tâches
+    \item Une liste non ordonnée vide qui sera remplie dynamiquement avec les tâches
+\end{itemize}
+
+La structure est minimaliste et se concentre sur les fonctionnalités essentielles d'une liste de tâches.
+
+\section{Analyse du code JavaScript}
+
+\subsection{Initialisation et variables}
+Le script commence par sélectionner les éléments DOM nécessaires et initialiser un tableau pour stocker les tâches :
+
+\begin{lstlisting}[language=JavaScript]
+const form = document.querySelector('form');
+const liste = document.querySelector('ul');
+const input = document.querySelector('form input');
+
+let toutesLesTaches = [];
+\end{lstlisting}
+
+Cette partie du code :
+\begin{itemize}
+    \item Sélectionne le formulaire, la liste et le champ de saisie
+    \item Initialise un tableau vide pour stocker toutes les tâches
+\end{itemize}
+
+\subsection{Gestion du formulaire}
+Le script ajoute un écouteur d'événements au formulaire pour gérer la soumission :
+
+\begin{lstlisting}[language=JavaScript]
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const text = input.value.trim();
+    if (text !== '') {
+        rajouterTache(text);
+        input.value = '';
+    }
+});
+\end{lstlisting}
+
+Cette fonction :
+\begin{itemize}
+    \item Empêche le comportement par défaut du formulaire (rechargement de la page)
+    \item Récupère le texte saisi et supprime les espaces inutiles
+    \item Vérifie que le texte n'est pas vide
+    \item Appelle la fonction pour ajouter la tâche
+    \item Vide le champ de saisie
+\end{itemize}
+
+\subsection{Ajout de tâches}
+La fonction \texttt{rajouterTache()} crée un objet pour représenter la tâche :
+
+\begin{lstlisting}[language=JavaScript]
+function rajouterTache(text) {
+    const todo = {
+        text,
+        id: Date.now()
+    };
+    afficherListe(todo);
+}
+\end{lstlisting}
+
+Cette fonction :
+\begin{itemize}
+    \item Crée un objet avec le texte de la tâche
+    \item Utilise \texttt{Date.now()} comme identifiant unique pour la tâche
+    \item Appelle la fonction pour afficher la tâche dans la liste
+\end{itemize}
+
+\subsection{Affichage des tâches}
+La fonction \texttt{afficherListe()} crée les éléments DOM pour une tâche :
+
+\begin{lstlisting}[language=JavaScript]
+function afficherListe(todo) {
+    const item = document.createElement('li');
+    item.setAttribute('data-key', todo.id);
+
+    const checkbox = document.createElement('input');
+    checkbox.setAttribute('type', 'checkbox');
+    checkbox.addEventListener('click', tacheFaite);
+    item.appendChild(checkbox);
+
+    const txt = document.createElement('span');
+    txt.innerText = todo.text;
+    item.appendChild(txt);
+
+    const btn = document.createElement('button');
+    btn.addEventListener('click', supprimerTache);
+    const img = document.createElement('img');
+    img.setAttribute('src', 'fermer.svg');
+    btn.appendChild(img);
+    item.appendChild(btn);
+
+    liste.appendChild(item);
+    toutesLesTaches.push(item);
+}
+\end{lstlisting}
+
+Cette fonction :
+\begin{itemize}
+    \item Crée un élément de liste (\texttt{li})
+    \item Ajoute l'identifiant de la tâche comme attribut \texttt{data-key}
+    \item Crée une case à cocher avec un écouteur d'événements
+    \item Crée un élément \texttt{span} pour afficher le texte de la tâche
+    \item Crée un bouton avec une image pour supprimer la tâche
+    \item Ajoute tous ces éléments à la liste
+    \item Ajoute l'élément de liste au tableau \texttt{toutesLesTaches}
+\end{itemize}
+
+\subsection{Marquer une tâche comme terminée}
+La fonction \texttt{tacheFaite()} gère le marquage d'une tâche comme terminée :
+
+\begin{lstlisting}[language=JavaScript]
+function tacheFaite(e) {
+    e.target.parentNode.classList.toggle('finDeTache');
+}
+\end{lstlisting}
+
+Cette fonction :
+\begin{itemize}
+    \item Bascule la classe CSS \texttt{finDeTache} sur l'élément parent de la case à cocher
+    \item Cette classe applique un style barré au texte de la tâche
+\end{itemize}
+
+\subsection{Suppression de tâches}
+La fonction \texttt{supprimerTache()} gère la suppression d'une tâche :
+
+\begin{lstlisting}[language=JavaScript]
+function supprimerTache(e) {
+    toutesLesTaches.forEach(el => {
+        if (e.target.parentNode.getAttribute('data-key') == el.getAttribute('data-key')) {
+            el.remove();
+            toutesLesTaches = toutesLesTaches.filter(li => li.dataset.key !== el.dataset.key);
+        }
+    });
+}
+\end{lstlisting}
+
+Cette fonction :
+\begin{itemize}
+    \item Parcourt toutes les tâches stockées
+    \item Compare l'identifiant de la tâche à supprimer avec les identifiants stockés
+    \item Supprime l'élément DOM correspondant
+    \item Met à jour le tableau \texttt{toutesLesTaches} en filtrant la tâche supprimée
+\end{itemize}
+
+\section{Analyse du code CSS}
+Le fichier CSS définit l'apparence de l'application :
+
+\begin{lstlisting}[language=CSS]
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #333;
+    color: #f1f1f1;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    font-size: 5vw;
+    margin: 50px 0;
+}
+
+form {
+    display: block;
+    margin: 0 auto;
+    width: 70%;
+    max-width: 1200px;
+    min-width: 400px;
+}
+
+form label {
+    display: block;
+    font-size: 25px;
+}
+
+form input {
+    width: 100%;
+    padding: 15px;
+    font-size: 20px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    border: 1px solid #333;
+}
+
+form input:focus {
+    box-shadow: 0 0 2px 2px rgba(255, 255, 255, 0.4);
+}
+
+form button {
+    padding: 15px 30px;
+    font-size: 20px;
+    background: #f1f1f1;
+    border: 1px solid #555;
+    border-radius: 5px;
+}
+
+form button:hover {
+    background: transparent;
+    color: #f1f1f1;
+    cursor: pointer;
+    border: 1px solid #f1f1f1;
+    transition: 0.5s;
+    box-shadow: 0 0 2px 2px rgba(255, 255, 255, 0.4);
+}
+
+.liste {
+    list-style-type: none;
+    margin: 20px auto 0;
+    width: 70%;
+    max-width: 1200px;
+    min-width: 400px;
+}
+
+li {
+    font-size: 20px;
+    width: 100%;
+    background: #f1f1f1;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    color: #333;
+    margin: 5px 0;
+    border-radius: 5px;
+}
+
+li:hover {
+    box-shadow: 0 0 2px 2px rgba(255, 255, 255, 0.4);
+}
+
+li input {
+    width: 40px;
+    height: 40px;
+    margin-left: 15px;
+}
+
+li button {
+    margin-left: auto;
+    padding: 5px;
+    background: #333;
+    border: none;
+    border-radius: 5px;
+}
+
+li button:hover {
+    box-shadow: 0 0 2px 2px rgba(255, 50, 50, 0.8);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button img {
+    width: 40px;
+    pointer-events: none;
+}
+
+li span {
+    font-size: 25px;
+    margin-left: 20px;
+}
+
+li.finDeTache span {
+    text-decoration: line-through;
+}
+\end{lstlisting}
+
+Les styles principaux incluent :
+\begin{itemize}
+    \item Une réinitialisation CSS de base pour normaliser l'apparence
+    \item Un arrière-plan sombre avec du texte clair
+    \item Un formulaire centré avec des dimensions responsives
+    \item Des éléments de liste avec un arrière-plan clair et du texte foncé
+    \item Une mise en page flexible pour les éléments de liste
+    \item Des effets de survol pour améliorer l'interactivité
+    \item Un style barré pour les tâches marquées comme terminées
+\end{itemize}
+
+\section{Flux de l'application}
+Le flux de l'application peut être résumé comme suit :
+
+\begin{enumerate}
+    \item L'utilisateur entre le texte d'une nouvelle tâche dans le champ de saisie
+    \item L'utilisateur clique sur le bouton "Ajouter la tâche" ou appuie sur Entrée
+    \item La tâche est ajoutée à la liste avec une case à cocher et un bouton de suppression
+    \item L'utilisateur peut :
+    \begin{itemize}
+        \item Cocher la case pour marquer la tâche comme terminée (le texte est barré)
+        \item Cliquer sur le bouton de suppression pour retirer la tâche de la liste
+    \end{itemize}
+\end{enumerate}
+
+\section{Aspects techniques importants}
+
+\subsection{Gestion des identifiants uniques}
+L'application utilise \texttt{Date.now()} pour générer des identifiants uniques pour chaque tâche. Cette approche est simple et efficace pour une application de cette taille, mais pourrait être remplacée par un générateur d'UUID pour une application plus complexe.
+
+\subsection{Manipulation du DOM}
+L'application utilise diverses méthodes de manipulation du DOM :
+\begin{itemize}
+    \item Sélection d'éléments : \texttt{document.querySelector()}
+    \item Création d'éléments : \texttt{document.createElement()}
+    \item Modification d'attributs : \texttt{element.setAttribute()}
+    \item Modification du contenu : \texttt{element.innerText}
+    \item Ajout d'éléments : \texttt{element.appendChild()}
+    \item Suppression d'éléments : \texttt{element.remove()}
+    \item Manipulation de classes : \texttt{element.classList.toggle()}
+\end{itemize}
+
+\subsection{Gestion des événements}
+L'application utilise des écouteurs d'événements pour réagir aux actions de l'utilisateur :
+\begin{itemize}
+    \item \texttt{form.addEventListener('submit', function)} pour la soumission du formulaire
+    \item \texttt{checkbox.addEventListener('click', function)} pour marquer une tâche comme terminée
+    \item \texttt{btn.addEventListener('click', function)} pour supprimer une tâche
+\end{itemize}
+
+\subsection{Gestion de l'état}
+L'application utilise un tableau (\texttt{toutesLesTaches}) pour stocker l'état de l'application. Cette approche simple est suffisante pour une application de cette taille, mais pourrait être remplacée par un système de gestion d'état plus robuste pour une application plus complexe.
+
+\section{Limites et améliorations possibles}
+
+\subsection{Persistance des données}
+L'application ne persiste pas les données entre les sessions. Les tâches sont perdues lorsque la page est rechargée. Une amélioration possible serait d'utiliser le stockage local (\texttt{localStorage}) pour sauvegarder les tâches.
+
+\subsection{Édition des tâches}
+L'application ne permet pas d'éditer le texte d'une tâche existante. Une amélioration possible serait d'ajouter cette fonctionnalité.
+
+\subsection{Catégorisation et filtrage}
+L'application ne permet pas de catégoriser ou de filtrer les tâches. Une amélioration possible serait d'ajouter des catégories et des filtres pour organiser les tâches.
+
+\subsection{Dates d'échéance}
+L'application ne gère pas les dates d'échéance pour les tâches. Une amélioration possible serait d'ajouter cette fonctionnalité.
+
+\subsection{Accessibilité}
+L'application pourrait être améliorée en termes d'accessibilité, notamment en ajoutant des attributs ARIA et en s'assurant que tous les éléments interactifs sont accessibles au clavier.
+
+\section{Conclusion}
+Cette application To Do List est un exemple simple mais fonctionnel d'une application web interactive. Elle démontre :
+\begin{itemize}
+    \item La manipulation dynamique du DOM pour créer une interface réactive
+    \item L'utilisation d'écouteurs d'événements pour gérer les interactions utilisateur
+    \item L'application de styles CSS pour améliorer l'expérience utilisateur
+    \item Une architecture simple mais efficace pour une application de gestion de tâches
+\end{itemize}
+
+Malgré sa simplicité, l'application offre les fonctionnalités essentielles d'une liste de tâches et pourrait servir de base pour une application plus complexe avec des fonctionnalités supplémentaires.
+
+\end{document}

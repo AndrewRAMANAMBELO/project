@@ -1,0 +1,467 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\title{Analyse d'une Application de Quiz}
+\author{Documentation Technique}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+Ce document présente une analyse détaillée d'une application web de quiz. L'application génère aléatoirement 5 questions à partir d'un pool de questions sur les capitales des pays, permet à l'utilisateur d'y répondre, puis évalue les réponses et affiche les résultats. L'application est composée de trois fichiers principaux : un fichier HTML (index.html), un fichier JavaScript (script.js) et un fichier CSS (style.css).
+
+\section{Structure de l'application}
+L'application suit une architecture simple basée sur le DOM et les événements JavaScript. Elle permet aux utilisateurs de :
+\begin{itemize}
+    \item Répondre à 5 questions aléatoires sur les capitales des pays
+    \item Soumettre leurs réponses pour évaluation
+    \item Voir leur score et les questions correctes/incorrectes
+    \item Recommencer le quiz avec un nouveau jeu de questions
+\end{itemize}
+
+\section{Analyse du code HTML}
+Le fichier HTML fournit la structure de base de l'application :
+
+\begin{lstlisting}[language=HTML]
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz JavaScript</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="form-quizz">
+        <h1>Quiz JavaScript</h1>
+        <form class="form-quizz">
+            <!-- Questions will be dynamically inserted here -->
+            <div id="questions-container"></div>
+            <button type="submit">Valider</button>
+        </form>
+
+        <div class="resultats">
+            <h2></h2>
+            <p class="note"></p>
+            <p class="aide"></p>
+            <button id="retry-button">Recommencer</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+\end{lstlisting}
+
+Les éléments clés sont :
+\begin{itemize}
+    \item Un titre principal
+    \item Un formulaire avec un conteneur vide pour les questions générées dynamiquement
+    \item Un bouton de validation pour soumettre les réponses
+    \item Une section de résultats avec des éléments pour afficher le score et les messages
+    \item Un bouton pour recommencer le quiz
+\end{itemize}
+
+La structure est minimaliste car la plupart du contenu est généré dynamiquement par JavaScript.
+
+\section{Analyse du code JavaScript}
+
+\subsection{Initialisation et variables}
+Le script commence par sélectionner les éléments DOM nécessaires et définir le pool de questions :
+
+\begin{lstlisting}[language=JavaScript]
+const form = document.querySelector(".form-quizz");
+const questionsContainer = document.getElementById("questions-container");
+const titreResultat = document.querySelector(".resultats h2");
+const noteResultat = document.querySelector(".note");
+const aideResultat = document.querySelector(".aide");
+const retryButton = document.getElementById("retry-button");
+
+// Pool of questions and answers
+const questionPool = [
+    {
+        question: "Quelle est la capitale de la France ?",
+        answers: ["Paris", "Lyon", "Marseille"],
+        correctAnswer: "a"
+    },
+    // ... 9 more questions ...
+];
+
+let currentQuestions = []; // Stores the current set of questions
+let reponses = []; // Stores the correct answers for the current quiz
+\end{lstlisting}
+
+Cette partie du code :
+\begin{itemize}
+    \item Sélectionne les éléments DOM nécessaires pour manipuler l'interface
+    \item Définit un tableau d'objets contenant 10 questions sur les capitales des pays
+    \item Initialise des variables pour stocker les questions actuelles et les réponses correctes
+\end{itemize}
+
+\subsection{Génération des questions}
+La fonction \texttt{generateQuestions()} génère aléatoirement 5 questions à partir du pool :
+
+\begin{lstlisting}[language=JavaScript]
+function generateQuestions() {
+    // Shuffle the question pool and select the first 5 questions
+    const shuffledQuestions = questionPool.sort(() => Math.random() - 0.5);
+    currentQuestions = shuffledQuestions.slice(0, 5);
+    reponses = currentQuestions.map(q => q.correctAnswer);
+
+    // Clear the questions container
+    questionsContainer.innerHTML = "";
+
+    // Generate the HTML for the selected questions
+    currentQuestions.forEach((question, index) => {
+        const questionBlock = document.createElement("div");
+        questionBlock.classList.add("question-block");
+
+        const questionText = document.createElement("p");
+        questionText.innerText = `${index + 1}. ${question.question}`;
+        questionBlock.appendChild(questionText);
+
+        question.answers.forEach((answer, i) => {
+            const label = document.createElement("label");
+            const input = document.createElement("input");
+            input.type = "radio";
+            input.name = `q${index + 1}`;
+            input.value = String.fromCharCode(97 + i); // a, b, c, etc.
+            label.appendChild(input);
+            label.appendChild(document.createTextNode(` ${answer}`));
+            questionBlock.appendChild(label);
+        });
+
+        questionsContainer.appendChild(questionBlock);
+    });
+}
+\end{lstlisting}
+
+Cette fonction :
+\begin{itemize}
+    \item Mélange le pool de questions en utilisant l'algorithme de Fisher-Yates (via \texttt{sort()} avec une fonction de comparaison aléatoire)
+    \item Sélectionne les 5 premières questions du tableau mélangé
+    \item Extrait les réponses correctes pour ces questions
+    \item Vide le conteneur de questions
+    \item Génère dynamiquement le HTML pour chaque question et ses réponses possibles
+    \item Ajoute les éléments créés au DOM
+\end{itemize}
+
+\subsection{Vérification des réponses}
+La fonction \texttt{verifFunc()} vérifie les réponses de l'utilisateur :
+
+\begin{lstlisting}[language=JavaScript]
+function verifFunc(tabResultats) {
+    const verifTableau = [];
+    for (let a = 0; a < 5; a++) {
+        verifTableau.push(tabResultats[a] === reponses[a]);
+    }
+    afficherResultats(verifTableau);
+    couleursFonction(verifTableau);
+}
+\end{lstlisting}
+
+Cette fonction :
+\begin{itemize}
+    \item Compare les réponses de l'utilisateur avec les réponses correctes
+    \item Crée un tableau de booléens indiquant si chaque réponse est correcte
+    \item Appelle les fonctions pour afficher les résultats et mettre à jour les couleurs
+\end{itemize}
+
+\subsection{Affichage des résultats}
+La fonction \texttt{afficherResultats()} affiche le score et les messages appropriés :
+
+\begin{lstlisting}[language=JavaScript]
+function afficherResultats(tabCheck) {
+    const nbFautes = tabCheck.filter(el => el !== true).length;
+
+    switch (nbFautes) {
+        case 0:
+            titreResultat.innerText = "Bravo, c'est un sans fautes !";
+            aideResultat.innerText = "";
+            noteResultat.innerText = "5/5";
+            break;
+        case 1:
+            titreResultat.innerText = "Vous y êtes presque !";
+            aideResultat.innerText = "Retentez une autre réponse dans les cases rouges puis validez !";
+            noteResultat.innerText = "4/5";
+            break;
+        // ... cases 2, 3, 4, 5 ...
+        default:
+            titreResultat.innerText = "Oops, cas inattendu !";
+    }
+}
+\end{lstlisting}
+
+Cette fonction :
+\begin{itemize}
+    \item Compte le nombre de réponses incorrectes
+    \item Utilise une structure \texttt{switch} pour définir les messages appropriés en fonction du score
+    \item Met à jour le DOM avec le titre, la note et les conseils
+\end{itemize}
+
+\subsection{Mise en évidence des réponses}
+La fonction \texttt{couleursFonction()} met en évidence les réponses correctes et incorrectes :
+
+\begin{lstlisting}[language=JavaScript]
+function couleursFonction(tabValide) {
+    const toutesLesQuestions = document.querySelectorAll(".question-block");
+    for (let j = 0; j < tabValide.length; j++) {
+        if (tabValide[j] === true) {
+            toutesLesQuestions[j].style.background = "lightgreen";
+        } else {
+            toutesLesQuestions[j].style.background = "#ffbbbb";
+            toutesLesQuestions[j].classList.add("echec");
+            setTimeout(() => {
+                toutesLesQuestions[j].classList.remove("echec");
+            }, 500);
+        }
+    }
+}
+\end{lstlisting}
+
+Cette fonction :
+\begin{itemize}
+    \item Sélectionne tous les blocs de questions
+    \item Change la couleur de fond en vert pour les réponses correctes
+    \item Change la couleur de fond en rouge et ajoute une animation pour les réponses incorrectes
+    \item Supprime l'animation après 500 ms
+\end{itemize}
+
+\subsection{Gestion des événements}
+Le script ajoute des écouteurs d'événements pour la soumission du formulaire et le bouton de recommencement :
+
+\begin{lstlisting}[language=JavaScript]
+form.addEventListener("submit", (e) => {
+    e.preventDefault(); // Prevent form submission
+
+    const tableauResultats = [];
+    for (let i = 1; i <= 5; i++) {
+        const selectedAnswer = document.querySelector(`input[name="q${i}"]:checked`);
+        tableauResultats.push(selectedAnswer ? selectedAnswer.value : null);
+    }
+
+    verifFunc(tableauResultats);
+});
+
+retryButton.addEventListener("click", () => {
+    generateQuestions(); // Generate new questions
+    titreResultat.innerText = "";
+    noteResultat.innerText = "";
+    aideResultat.innerText = "";
+    document.querySelectorAll(".question-block").forEach(block => {
+        block.style.background = "white";
+    });
+});
+
+// Generate questions when the page loads
+generateQuestions();
+\end{lstlisting}
+
+Cette partie du code :
+\begin{itemize}
+    \item Ajoute un écouteur pour la soumission du formulaire qui collecte les réponses et les vérifie
+    \item Ajoute un écouteur pour le bouton de recommencement qui génère de nouvelles questions et réinitialise l'interface
+    \item Appelle \texttt{generateQuestions()} au chargement de la page pour initialiser le quiz
+\end{itemize}
+
+\section{Analyse du code CSS}
+Le fichier CSS définit l'apparence de l'application :
+
+\begin{lstlisting}[language=CSS]
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.form-quizz {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.question-block {
+    margin-bottom: 20px;
+}
+
+.question-block p {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+.resultats {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.resultats h2 {
+    color: #333;
+}
+
+.note {
+    font-size: 24px;
+    font-weight: bold;
+    color: #28a745;
+}
+
+.aide {
+    color: #dc3545;
+    font-style: italic;
+}
+
+.echec {
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    50% { transform: translateX(10px); }
+    75% { transform: translateX(-10px); }
+    100% { transform: translateX(0); }
+}
+
+#retry-button {
+    margin-top: 20px;
+    background-color: #007bff;
+}
+
+#retry-button:hover {
+    background-color: #0056b3;
+}
+\end{lstlisting}
+
+Les styles principaux incluent :
+\begin{itemize}
+    \item Une mise en page propre avec une police sans-serif et un arrière-plan clair
+    \item Un conteneur central avec des ombres et des coins arrondis
+    \item Des styles pour les questions, les étiquettes et les boutons
+    \item Des couleurs différentes pour les boutons de validation et de recommencement
+    \item Des styles pour les résultats, avec des couleurs différentes pour la note et les conseils
+    \item Une animation de secouement pour les réponses incorrectes
+\end{itemize}
+
+\section{Flux de l'application}
+Le flux de l'application peut être résumé comme suit :
+
+\begin{enumerate}
+    \item Au chargement de la page, 5 questions aléatoires sont générées à partir du pool de questions
+    \item L'utilisateur sélectionne une réponse pour chaque question
+    \item L'utilisateur clique sur le bouton "Valider" pour soumettre ses réponses
+    \item L'application vérifie les réponses et affiche le score
+    \item Les questions correctes sont mises en évidence en vert, les incorrectes en rouge avec une animation
+    \item L'utilisateur peut corriger ses réponses et revalider, ou cliquer sur "Recommencer" pour un nouveau jeu de questions
+\end{enumerate}
+
+\section{Aspects techniques importants}
+
+\subsection{Génération aléatoire de questions}
+L'application utilise une technique simple mais efficace pour mélanger le tableau de questions :
+\begin{lstlisting}[language=JavaScript]
+const shuffledQuestions = questionPool.sort(() => Math.random() - 0.5);
+\end{lstlisting}
+
+Cette approche, bien que non parfaitement aléatoire d'un point de vue statistique, est suffisante pour cette application.
+
+\subsection{Manipulation dynamique du DOM}
+L'application crée dynamiquement les éléments HTML pour les questions et les réponses, ce qui permet de générer un quiz différent à chaque fois.
+
+\subsection{Gestion des réponses}
+L'application utilise les attributs \texttt{name} des boutons radio pour regrouper les réponses par question, et les valeurs \texttt{a}, \texttt{b}, \texttt{c} pour identifier les réponses.
+
+\subsection{Feedback visuel}
+L'application fournit un feedback visuel immédiat à l'utilisateur en changeant les couleurs des questions et en ajoutant une animation pour les réponses incorrectes.
+
+\section{Limites et améliorations possibles}
+
+\subsection{Persistance des données}
+L'application ne persiste pas les scores entre les sessions. Une amélioration possible serait d'utiliser le stockage local (\texttt{localStorage}) pour sauvegarder les meilleurs scores.
+
+\subsection{Catégories de questions}
+L'application ne propose qu'un seul type de questions (capitales des pays). Une amélioration possible serait d'ajouter différentes catégories de questions.
+
+\subsection{Niveaux de difficulté}
+L'application ne propose qu'un seul niveau de difficulté. Une amélioration possible serait d'ajouter différents niveaux de difficulté.
+
+\subsection{Minuteur}
+L'application ne limite pas le temps de réponse. Une amélioration possible serait d'ajouter un minuteur pour chaque question ou pour l'ensemble du quiz.
+
+\subsection{Accessibilité}
+L'application pourrait être améliorée en termes d'accessibilité, notamment en ajoutant des attributs ARIA et en s'assurant que tous les éléments interactifs sont accessibles au clavier.
+
+\section{Conclusion}
+Cette application de quiz est un exemple bien conçu d'une application web interactive. Elle démontre :
+\begin{itemize}
+    \item La génération dynamique de contenu HTML
+    \item La manipulation du DOM pour créer une interface réactive
+    \item L'utilisation d'écouteurs d'événements pour gérer les interactions utilisateur
+    \item L'application de styles CSS et d'animations pour améliorer l'expérience utilisateur
+    \item Une architecture simple mais efficace pour une application de quiz
+\end{itemize}
+
+L'application offre une expérience utilisateur agréable et pourrait servir de base pour une application de quiz plus complexe avec des fonctionnalités supplémentaires.
+
+\end{document}

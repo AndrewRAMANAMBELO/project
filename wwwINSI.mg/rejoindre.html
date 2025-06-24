@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rejoindre l'INSI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0f766e',
+                        secondary: '#f5f5f5',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Banner -->
+    <header>
+        <!-- Top Bar -->
+        <div class="bg-primary text-white py-2">
+            <div class="container mx-auto px-4 lg:px-6">
+                <div class="flex flex-col md:flex-row justify-between text-sm">
+                    <div class="flex items-center mb-2 md:mb-0">
+                        <i class="fas fa-phone mr-2"></i>
+                        <span>+261 38 34 563 78 ou +261 34 72 896 32</span>
+                    </div>
+                    <div class="flex items-center mb-2 md:mb-0">
+                        <i class="fas fa-envelope mr-2"></i>
+                        <a href="mailto:contact@insi.mg" class="hover:underline">contact@insi.mg</a>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-map-marker-alt mr-2"></i>
+                        <span>Lot VF 32 Ter Ankazotokana Ambanidia</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Navigation -->
+        <nav class="bg-white shadow-md relative">
+            <div class="container mx-auto px-4 lg:px-6">
+                <div class="flex justify-between items-center py-4">
+                    <div class="logo-container h-16 w-16 md:h-20 md:w-20">
+                        <a href="index.html">
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Capture_d_%C3%A9cran_2025-03-25_113510-removebg-preview-GOtROsl8wquhfZkDvQFDB6b9s2VXS0.png" alt="INSI Logo" class="logo-img">
+                        </a>
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    <button id="menu-toggle" class="md:hidden text-gray-600 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+
+                    <!-- Desktop Menu -->
+                    <ul class="hidden md:flex space-x-6 lg:space-x-8">
+                        <li class="group relative">
+                            <a href="#" class="flex items-center py-2 text-gray-700 hover:text-primary font-medium">
+                                Formation universitaire
+                                <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                            </a>
+                            <ul class="absolute left-0 top-full w-48 bg-white shadow-lg rounded-md py-2 hidden group-hover:block z-50">
+                                <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">Licence</a></li>
+                                <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">Master</a></li>
+                                <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">Doctorat</a></li>
+                            </ul>
+                        </li>
+                        <li class="group relative">
+                            <a href="#" class="flex items-center py-2 text-gray-700 hover:text-primary font-medium">
+                                Formation professionnelle
+                                <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                            </a>
+                            <ul class="absolute left-0 top-full w-48 bg-white shadow-lg rounded-md py-2 hidden group-hover:block z-50">
+                                <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">Certification</a></li>
+                                <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">Cours du soir</a></li>
+                                <li><a href="court.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">Formation courte</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="longue.html" class="py-2 text-gray-700 hover:text-primary font-medium">Formation entreprise</a>
+                        </li>
+                        <li class="group relative">
+                            <a href="#" class="flex items-center py-2 text-gray-700 hover:text-primary font-medium">
+                                INSI Online
+                                <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                            </a>
+                            <ul class="absolute left-0 top-full w-48 bg-white shadow-lg rounded-md py-2 hidden group-hover:block z-50">
+                                <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">E-learning</a></li>
+                                <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">Webinars</a></li>
+                                <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">Ressources</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="py-2 text-gray-700 hover:text-primary font-medium">Événement</a>
+                        </li>
+                        <li>
+                            <a href="Nos_actualité.html" class="py-2 text-gray-700 hover:text-primary font-medium">Nos actualités</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden bg-white shadow-lg absolute w-full left-0 top-full z-50 hidden">
+                <ul class="py-2">
+                    <li class="border-b border-gray-100">
+                        <button class="mobile-dropdown-toggle w-full text-left px-4 py-3 flex justify-between items-center text-gray-700">
+                            Formation universitaire
+                            <i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                        <ul class="mobile-dropdown-menu hidden bg-gray-50 py-2">
+                            <li><a href="#" class="block px-8 py-2 text-sm text-gray-700 hover:text-primary">Licence</a></li>
+                            <li><a href="#" class="block px-8 py-2 text-sm text-gray-700 hover:text-primary">Master</a></li>
+                            <li><a href="#" class="block px-8 py-2 text-sm text-gray-700 hover:text-primary">Doctorat</a></li>
+                        </ul>
+                    </li>
+                    <li class="border-b border-gray-100">
+                        <button class="mobile-dropdown-toggle w-full text-left px-4 py-3 flex justify-between items-center text-gray-700">
+                            Formation professionnelle
+                            <i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                        <ul class="mobile-dropdown-menu hidden bg-gray-50 py-2">
+                            <li><a href="#" class="block px-8 py-2 text-sm text-gray-700 hover:text-primary">Certification</a></li>
+                            <li><a href="#" class="block px-8 py-2 text-sm text-gray-700 hover:text-primary">Cours du soir</a></li>
+                            <li><a href="#" class="block px-8 py-2 text-sm text-gray-700 hover:text-primary">Formation courte</a></li>
+                        </ul>
+                    </li>
+                    <li class="border-b border-gray-100">
+                        <a href="#" class="block px-4 py-3 text-gray-700 hover:text-primary">Formation entreprise</a>
+                    </li>
+                    <li class="border-b border-gray-100">
+                        <button class="mobile-dropdown-toggle w-full text-left px-4 py-3 flex justify-between items-center text-gray-700">
+                            INSI Online
+                            <i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                        <ul class="mobile-dropdown-menu hidden bg-gray-50 py-2">
+                            <li><a href="#" class="block px-8 py-2 text-sm text-gray-700 hover:text-primary">E-learning</a></li>
+                            <li><a href="#" class="block px-8 py-2 text-sm text-gray-700 hover:text-primary">Webinars</a></li>
+                            <li><a href="#" class="block px-8 py-2 text-sm text-gray-700 hover:text-primary">Ressources</a></li>
+                        </ul>
+                    </li>
+                    <li class="border-b border-gray-100">
+                        <a href="#" class="block px-4 py-3 text-gray-700 hover:text-primary">Événement</a>
+                    </li>
+                    <li>
+                        <a href="#" class="block px-4 py-3 text-gray-700 hover:text-primary">Nos actualités</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="relative min-h-screen">
+        <div class="absolute inset-0">
+            <img src="your-image-path.jpg" alt="Background" class="w-full h-full object-cover">
+        </div>
+        <div class="relative bg-white bg-opacity-90 p-8 max-w-4xl mx-auto mt-10 shadow-lg rounded-lg">
+            <h1 class="text-3xl font-bold text-center mb-6">Rejoindre l'INSI</h1>
+            <p class="text-center mb-6">Professionnel, bachelier, étudiant, l'informatique vous intéresse ?<br>INSI est fait pour vous ! Ne ratez surtout pas la rentrée de cette année 2024.</p>
+            
+            <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="col-span-2">
+                    <label class="block font-medium">Type de formation</label>
+                    <select class="w-full p-2 border rounded">
+                        <option>Licence</option>
+                        <option>Master</option>
+                        <option>Doctorat</option>
+                    </select>
+                </div>
+                <input type="text" placeholder="Nom" class="p-2 border rounded">
+                <input type="text" placeholder="Prénom" class="p-2 border rounded">
+                <input type="text" placeholder="Adresse" class="p-2 border rounded col-span-2">
+                <input type="date" placeholder="Date de naissance" class="p-2 border rounded">
+                <input type="text" placeholder="Code postal" class="p-2 border rounded">
+                <input type="text" placeholder="Ville" class="p-2 border rounded">
+                <input type="tel" placeholder="Téléphone" class="p-2 border rounded">
+                <input type="email" placeholder="Email" class="p-2 border rounded">
+                <textarea placeholder="Message" class="p-2 border rounded col-span-2"></textarea>
+                <button type="submit" class="col-span-2 bg-blue-600 text-white p-2 rounded hover:bg-blue-700">Candidater</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-secondary py-12 mt-auto">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Left Section -->
+                <div>
+                    <h2 class="text-xl font-semibold text-gray-800 mb-4">Nos informations</h2>
+                    <div class="flex items-start mb-3 text-gray-600">
+                        <i class="fas fa-map-marker-alt w-5 mt-1 mr-3 text-primary"></i>
+                        <span>LOT VF32 TER<br>ANKAZOTOKANA</span>
+                    </div>
+                    <div class="flex items-start mb-3 text-gray-600">
+                        <i class="fas fa-phone w-5 mt-1 mr-3 text-primary"></i>
+                        <div class="flex flex-col">
+                            <span>+261 38 34 563 78</span>
+                            <span>+261 34 72 896 32</span>
+                        </div>
+                    </div>
+                    <div class="flex items-start mb-3 text-gray-600">
+                        <i class="fas fa-envelope w-5 mt-1 mr-3 text-primary"></i>
+                        <a href="mailto:contact@insi.mg" class="hover:text-primary">contact@insi.mg</a>
+                    </div>
+                </div>
+
+                <!-- Center Section -->
+                <div class="flex flex-col items-center text-center">
+                    <div class="logo-container h-24 w-24 md:h-28 md:w-28 mb-4">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Capture_d_%C3%A9cran_2025-03-25_113510-removebg-preview-GOtROsl8wquhfZkDvQFDB6b9s2VXS0.png" alt="INSI Logo" class="logo-img">
+                    </div>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="bg-primary hover:bg-primary/80 text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="bg-primary hover:bg-primary/80 text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="bg-primary hover:bg-primary/80 text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                    <div class="text-gray-600 text-sm">
+                        Copyright © INSI 2025
+                    </div>
+                </div>
+
+                <!-- Right Section -->
+                <div class="md:text-right">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-4">Nous connaître</h2>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Je candidate</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Contact</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Qui sommes-nous</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Partenariat</a></li>
+                        <li><a href="rejoindre.html" class="text-gray-600 hover:text-primary">Rejoindre l'institut</a></li>
+                    </ul>
+                    <div class="inline-flex items-center mt-4 border border-gray-300 rounded px-3 py-1 cursor-pointer hover:bg-gray-100">
+                        <img src="https://via.placeholder.com/20" alt="French Flag" class="w-5 h-5 mr-2">
+                        <span class="text-gray-600 mr-2">French</span>
+                        <i class="fas fa-chevron-down text-xs text-gray-500"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Mobile dropdown toggles
+        document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                const menu = this.nextElementSibling;
+                menu.classList.toggle('hidden');
+                const icon = this.querySelector('i');
+                icon.classList.toggle('fa-chevron-down');
+                icon.classList.toggle('fa-chevron-up');
+            });
+        });
+    </script>
+</body>
+</html>

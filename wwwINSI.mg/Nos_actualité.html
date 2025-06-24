@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualités Technologiques</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0f766e',
+                        secondary: '#f5f5f5',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Banner -->
+    <header>
+        <!-- Top Bar -->
+        <div class="bg-primary text-white py-2">
+            <div class="container mx-auto px-4 lg:px-6">
+                <div class="flex flex-col md:flex-row justify-between text-sm">
+                    <div class="flex items-center mb-2 md:mb-0">
+                        <i class="fas fa-phone mr-2"></i>
+                        <span>+261 38 34 563 78 ou +261 34 72 896 32</span>
+                    </div>
+                    <div class="flex items-center mb-2 md:mb-0">
+                        <i class="fas fa-envelope mr-2"></i>
+                        <a href="mailto:contact@insi.mg" class="hover:underline">contact@insi.mg</a>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-map-marker-alt mr-2"></i>
+                        <span>Lot VF 32 Ter Ankazotokana Ambanidia</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Navigation -->
+        <nav class="bg-white shadow-md relative">
+            <div class="container mx-auto px-4 lg:px-6">
+                <div class="flex justify-between items-center py-4">
+                    <div class="logo-container h-16 w-16 md:h-20 md:w-20">
+                        <a href="index.html">
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Capture_d_%C3%A9cran_2025-03-25_113510-removebg-preview-GOtROsl8wquhfZkDvQFDB6b9s2VXS0.png" alt="INSI Logo" class="logo-img">
+                        </a>
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    <button id="menu-toggle" class="md:hidden text-gray-600 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+
+                    <!-- Desktop Menu -->
+                    <ul class="hidden md:flex space-x-6 lg:space-x-8">
+                        <li class="group relative">
+                            <a href="#" class="flex items-center py-2 text-gray-700 hover:text-primary font-medium">
+                                Formation universitaire
+                                <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                            </a>
+                            <ul class="absolute left-0 top-full w-48 bg-white shadow-lg rounded-md py-2 hidden group-hover:block z-50">
+                                <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">Licence</a></li>
+                                <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">Master</a></li>
+                                <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">Doctorat</a></li>
+                            </ul>
+                        </li>
+                        <li class="group relative">
+                            <a href="#" class="flex items-center py-2 text-gray-700 hover:text-primary font-medium">
+                                Formation professionnelle
+                                <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                            </a>
+                            <ul class="absolute left-0 top-full w-48 bg-white shadow-lg rounded-md py-2 hidden group-hover:block z-50">
+                                <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">Certification</a></li>
+                                <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">Cours du soir</a></li>
+                                <li><a href="court.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">Formation courte</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="longue.html" class="py-2 text-gray-700 hover:text-primary font-medium">Formation entreprise</a>
+                        </li>
+                        <li class="group relative">
+                            <a href="#" class="flex items-center py-2 text-gray-700 hover:text-primary font-medium">
+                                INSI Online
+                                <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                            </a>
+                            <ul class="absolute left-0 top-full w-48 bg-white shadow-lg rounded-md py-2 hidden group-hover:block z-50">
+                                <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">E-learning</a></li>
+                                <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">Webinars</a></li>
+                                <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">Ressources</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="py-2 text-gray-700 hover:text-primary font-medium">Événement</a>
+                        </li>
+                        <li>
+                            <a href="Nos_actualité.html" class="py-2 text-gray-700 hover:text-primary font-medium">Nos actualités</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden bg-white shadow-lg absolute w-full left-0 top-full z-50 hidden">
+                <ul class="py-2">
+                    <li class="border-b border-gray-100">
+                        <button class="mobile-dropdown-toggle w-full text-left px-4 py-3 flex justify-between items-center text-gray-700">
+                            Formation universitaire
+                            <i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                        <ul class="mobile-dropdown-menu hidden bg-gray-50 py-2">
+                            <li><a href="#" class="block px-8 py-2 text-sm text-gray-700 hover:text-primary">Licence</a></li>
+                            <li><a href="#" class="block px-8 py-2 text-sm text-gray-700 hover:text-primary">Master</a></li>
+                            <li><a href="#" class="block px-8 py-2 text-sm text-gray-700 hover:text-primary">Doctorat</a></li>
+                        </ul>
+                    </li>
+                    <li class="border-b border-gray-100">
+                        <button class="mobile-dropdown-toggle w-full text-left px-4 py-3 flex justify-between items-center text-gray-700">
+                            Formation professionnelle
+                            <i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                        <ul class="mobile-dropdown-menu hidden bg-gray-50 py-2">
+                            <li><a href="#" class="block px-8 py-2 text-sm text-gray-700 hover:text-primary">Certification</a></li>
+                            <li><a href="#" class="block px-8 py-2 text-sm text-gray-700 hover:text-primary">Cours du soir</a></li>
+                            <li><a href="#" class="block px-8 py-2 text-sm text-gray-700 hover:text-primary">Formation courte</a></li>
+                        </ul>
+                    </li>
+                    <li class="border-b border-gray-100">
+                        <a href="#" class="block px-4 py-3 text-gray-700 hover:text-primary">Formation entreprise</a>
+                    </li>
+                    <li class="border-b border-gray-100">
+                        <button class="mobile-dropdown-toggle w-full text-left px-4 py-3 flex justify-between items-center text-gray-700">
+                            INSI Online
+                            <i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                        <ul class="mobile-dropdown-menu hidden bg-gray-50 py-2">
+                            <li><a href="#" class="block px-8 py-2 text-sm text-gray-700 hover:text-primary">E-learning</a></li>
+                            <li><a href="#" class="block px-8 py-2 text-sm text-gray-700 hover:text-primary">Webinars</a></li>
+                            <li><a href="#" class="block px-8 py-2 text-sm text-gray-700 hover:text-primary">Ressources</a></li>
+                        </ul>
+                    </li>
+                    <li class="border-b border-gray-100">
+                        <a href="#" class="block px-4 py-3 text-gray-700 hover:text-primary">Événement</a>
+                    </li>
+                    <li>
+                        <a href="#" class="block px-4 py-3 text-gray-700 hover:text-primary">Nos actualités</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container mx-auto px-4 py-6">
+        <div class="flex flex-col lg:flex-row gap-6">
+            <!-- Main Content Area (2/3) -->
+            <div class="w-full lg:w-2/3">
+                <!-- Article 1: Intelligence Artificielle -->
+                <article class="mb-8">
+                    <div class="flex flex-col md:flex-row bg-white rounded-lg overflow-hidden shadow-sm">
+                        <div class="w-full md:w-1/3">
+                            <img src="https://source.unsplash.com/random/600x400/?artificial-intelligence" alt="Intelligence Artificielle" class="w-full h-48 md:h-full object-cover" id="ai-image">
+                        </div>
+                        <div class="w-full md:w-2/3 p-6">
+                            <h2 class="text-xl font-bold mb-2 text-gray-800">Les Progrès de l'Intelligence Artificielle : Une Révolution en Marche</h2>
+                            <div class="text-xs text-gray-500 mb-3">Publié le 15 Mars 2025</div>
+                            <p class="text-gray-600 text-sm">
+                                Ces dernières années, l'intelligence artificielle (IA) a quitté les laboratoires de recherche 
+                                pour s'imposer dans notre quotidien. Des applications pratiques émergent dans presque 
+                                tous les domaines, transformant la manière dont nous vivons, travaillons et interagissons 
+                                avec la technologie. Plongeons ensemble dans cette révolution technologique et ses 
+                                implications.
+                            </p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 2: Power BI -->
+                <article class="mb-8">
+                    <div class="flex flex-col md:flex-row bg-white rounded-lg overflow-hidden shadow-sm">
+                        <div class="w-full md:w-1/3">
+                            <img src="https://source.unsplash.com/random/600x400/?data-analytics" alt="Power BI" class="w-full h-48 md:h-full object-cover" id="powerbi-image">
+                        </div>
+                        <div class="w-full md:w-2/3 p-6">
+                            <h2 class="text-xl font-bold mb-2 text-gray-800">Le service analytique Power BI de Microsoft continue à s'enrichir</h2>
+                            <div class="text-xs text-gray-500 mb-3">Publié le 10 Mars 2025</div>
+                            <p class="text-gray-600 text-sm">
+                                Avec les fonctions Goals, Suites sur Teams pour un usage collaboratif, les équipes 
+                                peuvent désormais suivre leurs KPI et créer des tableaux de bord adaptés à 
+                                différents objectifs. Power BI s'impose comme une solution complète pour 
+                                l'analyse des données d'entreprise.
+                            </p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 3: Data Science et IA -->
+                <article class="mb-8">
+                    <div class="flex flex-col md:flex-row bg-white rounded-lg overflow-hidden shadow-sm">
+                        <div class="w-full md:w-1/3">
+                            <img src="https://source.unsplash.com/random/600x400/?data-science" alt="Data Science" class="w-full h-48 md:h-full object-cover" id="datascience-image">
+                        </div>
+                        <div class="w-full md:w-2/3 p-6">
+                            <h2 class="text-xl font-bold mb-2 text-gray-800">La Data Science et l'intelligence artificielle : une synergie révolutionnaire</h2>
+                            <div class="text-xs text-gray-500 mb-3">Publié le 5 Mars 2025</div>
+                            <p class="text-gray-600 text-sm">
+                                La Data Science et l'intelligence artificielle (IA) sont deux domaines étroitement liés qui 
+                                se développent l'une à l'appui de l'autre. La technologie IA Data Science fournit les outils 
+                                et les méthodes pour extraire des informations précieuses à partir de données, tandis que 
+                                l'IA permet aux machines d'apprendre.
+                            </p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 4: Data Engineer -->
+                <article class="mb-8">
+                    <div class="flex flex-col md:flex-row bg-white rounded-lg overflow-hidden shadow-sm">
+                        <div class="w-full md:w-1/3">
+                            <img src="https://source.unsplash.com/random/600x400/?programming" alt="Data Engineer" class="w-full h-48 md:h-full object-cover" id="dataengineer-image">
+                        </div>
+                        <div class="w-full md:w-2/3 p-6">
+                            <h2 class="text-xl font-bold mb-2 text-gray-800">Comment devenir Data Engineer - Un guide de carrière complet</h2>
+                            <div class="text-xs text-gray-500 mb-3">Publié le 28 Février 2025</div>
+                            <p class="text-gray-600 text-sm">
+                                Dans la grande révolution des données, les ingénieurs en informatique sont nécessaires 
+                                pour construire, tester et optimiser l'architecture des données. Découvrez les axes 
+                                de développement de cette carrière prometteuse et les compétences requises pour 
+                                réussir - les ingénieurs de données se concentrent sur la création de systèmes robustes.
+                            </p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 5: Data Science Revolution -->
+                <article class="mb-8">
+                    <div class="flex flex-col md:flex-row bg-white rounded-lg overflow-hidden shadow-sm">
+                        <div class="w-full md:w-1/3">
+                            <img src="https://source.unsplash.com/random/600x400/?digital" alt="Data Science Revolution" class="w-full h-48 md:h-full object-cover" id="datarev-image">
+                        </div>
+                        <div class="w-full md:w-2/3 p-6">
+                            <h2 class="text-xl font-bold mb-2 text-gray-800">La Data Science : Une révolution dans l'ère numérique</h2>
+                            <div class="text-xs text-gray-500 mb-3">Publié le 20 Février 2025</div>
+                            <p class="text-gray-600 text-sm">
+                                Dans un monde de plus en plus connecté, les données jouent un rôle essentiel dans la prise 
+                                de décisions éclairées. C'est là que la Data Science entre en jeu. La Data Science, ou 
+                                science des données, est une discipline interdisciplinaire qui combine des techniques 
+                                statistiques, des algorithmes et des systèmes pour extraire des connaissances.
+                            </p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Sidebar (1/3) -->
+            <div class="w-full lg:w-1/3">
+                <div class="bg-gray-200 rounded-lg p-6">
+                    <h2 class="text-xl font-bold mb-4 text-gray-800">Actualités facebook</h2>
+                    
+                    <!-- Facebook Post 1 -->
+                    <div class="bg-white rounded-lg p-4 mb-4 shadow-sm">
+                        <div class="flex items-center mb-3">
+                            <img src="https://source.unsplash.com/random/100x100/?logo" alt="INSI Logo" class="w-10 h-10 rounded-full mr-3" id="logo1-image">
+                            <div>
+                                <div class="font-semibold text-sm">Institut National Supérieur d'Informatique INSI</div>
+                                <div class="text-xs text-gray-500">14 Mars 2025</div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <img src="https://source.unsplash.com/random/600x400/?education" alt="Post Image" class="w-full h-40 object-cover rounded-lg" id="post1-image">
+                        </div>
+                        <p class="text-sm text-gray-700">
+                            🔥 DEVENEZ L'EXPERT DE DEMAIN ! 🔥<br>
+                            📢 BONNE NOUVELLE ! Les inscriptions sont ouvertes ! Une chance de rejoindre une formation d'excellence.
+                        </p>
+                    </div>
+                    
+                    <!-- Facebook Post 2 -->
+                    <div class="bg-white rounded-lg p-4 mb-4 shadow-sm">
+                        <div class="flex items-center mb-3">
+                            <img src="https://source.unsplash.com/random/100x100/?logo" alt="INSI Logo" class="w-10 h-10 rounded-full mr-3" id="logo2-image">
+                            <div>
+                                <div class="font-semibold text-sm">Institut National Supérieur d'Informatique INSI</div>
+                                <div class="text-xs text-gray-500">10 Mars 2025</div>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-700">
+                            🏀 Tournoi Inter-écoles de Basketball ! 🏀<br>
+                            "ALLEZ INSI !" 🔥<br>
+                            Nos équipes sont prêtes à affronter le terrain !
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to generate random tech images
+        function generateRandomImage(elementId, category) {
+            // Get a random number to avoid caching
+            const randomSeed = Math.floor(Math.random() * 1000);
+            const imageElement = document.getElementById(elementId);
+            
+            if (imageElement) {
+                // Use Unsplash source with random seed and category
+                imageElement.src = `https://source.unsplash.com/random/600x400/?${category}&sig=${randomSeed}`;
+            }
+        }
+
+        // Generate random images on page load
+        window.onload = function() {
+            // Main articles
+            generateRandomImage('ai-image', 'artificial-intelligence');
+            generateRandomImage('powerbi-image', 'data-analytics');
+            generateRandomImage('datascience-image', 'data-science');
+            generateRandomImage('dataengineer-image', 'programming');
+            generateRandomImage('datarev-image', 'digital');
+            
+            // Sidebar
+            generateRandomImage('logo1-image', 'tech-logo');
+            generateRandomImage('logo2-image', 'tech-logo');
+            generateRandomImage('post1-image', 'education-tech');
+        };
+
+        // Refresh images every 30 seconds for demo purposes
+        setInterval(function() {
+            // Main articles
+            generateRandomImage('ai-image', 'artificial-intelligence');
+            generateRandomImage('powerbi-image', 'data-analytics');
+            generateRandomImage('datascience-image', 'data-science');
+            generateRandomImage('dataengineer-image', 'programming');
+            generateRandomImage('datarev-image', 'digital');
+            
+            // Sidebar
+            generateRandomImage('logo1-image', 'tech-logo');
+            generateRandomImage('logo2-image', 'tech-logo');
+            generateRandomImage('post1-image', 'education-tech');
+        }, 30000);
+    </script>
+
+    <!-- Footer -->
+    <footer class="bg-secondary py-12 mt-auto">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Left Section -->
+                <div>
+                    <h2 class="text-xl font-semibold text-gray-800 mb-4">Nos informations</h2>
+                    <div class="flex items-start mb-3 text-gray-600">
+                        <i class="fas fa-map-marker-alt w-5 mt-1 mr-3 text-primary"></i>
+                        <span>LOT VF32 TER<br>ANKAZOTOKANA</span>
+                    </div>
+                    <div class="flex items-start mb-3 text-gray-600">
+                        <i class="fas fa-phone w-5 mt-1 mr-3 text-primary"></i>
+                        <div class="flex flex-col">
+                            <span>+261 38 34 563 78</span>
+                            <span>+261 34 72 896 32</span>
+                        </div>
+                    </div>
+                    <div class="flex items-start mb-3 text-gray-600">
+                        <i class="fas fa-envelope w-5 mt-1 mr-3 text-primary"></i>
+                        <a href="mailto:contact@insi.mg" class="hover:text-primary">contact@insi.mg</a>
+                    </div>
+                </div>
+
+                <!-- Center Section -->
+                <div class="flex flex-col items-center text-center">
+                    <div class="logo-container h-24 w-24 md:h-28 md:w-28 mb-4">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Capture_d_%C3%A9cran_2025-03-25_113510-removebg-preview-GOtROsl8wquhfZkDvQFDB6b9s2VXS0.png" alt="INSI Logo" class="logo-img">
+                    </div>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="bg-primary hover:bg-primary/80 text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="bg-primary hover:bg-primary/80 text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="bg-primary hover:bg-primary/80 text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                    <div class="text-gray-600 text-sm">
+                        Copyright © INSI 2025
+                    </div>
+                </div>
+
+                <!-- Right Section -->
+                <div class="md:text-right">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-4">Nous connaître</h2>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Je candidate</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Contact</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Qui sommes-nous</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Partenariat</a></li>
+                        <li><a href="rejoindre.html" class="text-gray-600 hover:text-primary">Rejoindre l'institut</a></li>
+                    </ul>
+                    <div class="inline-flex items-center mt-4 border border-gray-300 rounded px-3 py-1 cursor-pointer hover:bg-gray-100">
+                        <img src="https://via.placeholder.com/20" alt="French Flag" class="w-5 h-5 mr-2">
+                        <span class="text-gray-600 mr-2">French</span>
+                        <i class="fas fa-chevron-down text-xs text-gray-500"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Mobile dropdown toggles
+        document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                const menu = this.nextElementSibling;
+                menu.classList.toggle('hidden');
+                const icon = this.querySelector('i');
+                icon.classList.toggle('fa-chevron-down');
+                icon.classList.toggle('fa-chevron-up');
+            });
+        });
+    </script>
+</body>
+</html>

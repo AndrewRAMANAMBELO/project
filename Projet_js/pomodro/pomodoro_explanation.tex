@@ -1,0 +1,127 @@
+
+\documentclass{article}
+\usepackage[french]{babel}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegray}{gray}{0.9}
+\lstdefinestyle{customhtml}{
+    backgroundcolor=\color{codegray},
+    language=HTML,
+    basicstyle=\ttfamily,
+    frame=single
+}
+
+\lstdefinestyle{customjs}{
+    backgroundcolor=\color{codegray},
+    language=JavaScript,
+    basicstyle=\ttfamily,
+    frame=single
+}
+
+\lstdefinestyle{customcss}{
+    backgroundcolor=\color{codegray},
+    language=CSS,
+    basicstyle=\ttfamily,
+    frame=single
+}
+
+\title{Explication du Projet Pomodoro}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+Ce projet est une application de minuterie Pomodoro développée en HTML, CSS et JavaScript. L'utilisateur peut définir une durée de travail et de repos et démarrer un cycle Pomodoro.
+
+\section{Fichier HTML}
+Le fichier \texttt{index.html} définit la structure de la page. Voici un extrait du code :
+
+\begin{lstlisting}[style=customhtml]
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Pomodoro</h1>
+    <div class="time-inputs">
+        <label for="workTime">Temps de travail (minutes):</label>
+        <input type="number" id="workTime" value="25" min="1">
+        <label for="restTime">Temps de repos (minutes):</label>
+        <input type="number" id="restTime" value="5" min="1">
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+\end{lstlisting}
+
+Ce fichier contient les entrées utilisateur pour définir les temps de travail et de repos.
+
+\section{Fichier JavaScript}
+Le fichier \texttt{script.js} gère la logique du compte à rebours. Voici un extrait du code :
+
+\begin{lstlisting}[style=customjs]
+const affichageTravail = document.querySelector('.affichageT');
+const affichagePause = document.querySelector('.affichageP');
+const btnGo = document.querySelector('.b1');
+const btnPause = document.querySelector('.b2');
+const btnReset = document.querySelector('.b3');
+let tempsInitial;
+let tempsDeRepos;
+let pause = false;
+let nbDeCycles = 0;
+let ChronoEnMarche = false;
+let timer;
+
+function initializeTimes() {
+    tempsInitial = workTimeInput.value * 60;
+    tempsDeRepos = restTimeInput.value * 60;
+}
+btnGo.addEventListener('click', () => {
+    if (!ChronoEnMarche) {
+        initializeTimes();
+        timer = setInterval(() => {
+            if (!pause && tempsInitial > 0) {
+                tempsInitial--;
+            } else if (!pause && tempsInitial === 0 && tempsDeRepos > 0) {
+                tempsDeRepos--;
+            }
+        }, 1000);
+    }
+});
+\end{lstlisting}
+
+Ce code met en place un intervalle pour réduire le temps de travail et de repos.
+
+\section{Fichier CSS}
+Le fichier \texttt{style.css} est responsable de l'apparence de la minuterie. Voici un extrait :
+
+\begin{lstlisting}[style=customcss]
+body {
+    background: linear-gradient(to right, #333, #000022);
+    font-family: Arial, sans-serif;
+    color: #f1f1f1;
+}
+.bloc {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 30px;
+}
+\end{lstlisting}
+
+Ce fichier définit le style visuel de l'application.
+
+\section{Conclusion}
+Ce projet permet de gérer des sessions de travail et de repos à l'aide d'un minuteur interactif. Il combine HTML, CSS et JavaScript pour une expérience utilisateur fluide.
+
+\end{document}

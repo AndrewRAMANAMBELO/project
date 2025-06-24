@@ -1,0 +1,77 @@
+// Variables
+$bg-dark: #000;
+$btn-light: #d4d4d2;
+$btn-dark: #505050;
+$btn-orange: #ff9500;
+$white: #fff;
+$gray-border: #333;
+$shadow: #222;
+$font-stack: "Helvetica Neue", sans-serif;
+
+body {
+  margin: 0;
+  font-family: $font-stack;
+  background-color: $bg-dark;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.calculator {
+  width: 320px;
+  background-color: $bg-dark;
+  border-radius: 40px;
+  padding: 20px;
+  box-shadow: 0 0 20px $shadow;
+}
+
+.display {
+  background: none;
+  color: $white;
+  font-size: 3rem;
+  text-align: right;
+  padding: 20px 10px;
+  border-bottom: 1px solid $gray-border;
+  margin-bottom: 10px;
+  height: 80px;
+  overflow-x: auto;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.btn {
+  height: 60px;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.1s;
+
+  &:active {
+    opacity: 0.7;
+  }
+
+  &.light {
+    background-color: $btn-light;
+    color: $bg-dark;
+  }
+
+  &.dark {
+    background-color: $btn-dark;
+    color: $white;
+  }
+
+  &.orange {
+    background-color: $btn-orange;
+    color: $white;
+  }
+
+  &.wide {
+    grid-column: span 2;
+  }
+}

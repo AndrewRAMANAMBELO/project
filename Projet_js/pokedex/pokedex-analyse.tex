@@ -1,0 +1,382 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\title{Analyse d'une Application Pokédex}
+\author{Documentation Technique}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+Ce document présente une analyse détaillée d'une application web Pokédex qui utilise l'API PokeAPI pour afficher des informations sur les Pokémon. L'application est composée de trois fichiers principaux : un fichier JavaScript (script.js), un fichier HTML (index.html) et un fichier CSS (style.css).
+
+\section{Structure de l'application}
+L'application suit une architecture simple basée sur le DOM et les événements JavaScript. Elle permet aux utilisateurs de :
+\begin{itemize}
+    \item Visualiser une liste de Pokémon avec leurs noms, identifiants et images
+    \item Rechercher des Pokémon par leur nom
+    \item Charger plus de Pokémon en défilant vers le bas de la page
+\end{itemize}
+
+\section{Analyse du code JavaScript}
+
+\subsection{Variables et sélecteurs}
+Le script commence par sélectionner les éléments DOM nécessaires et initialiser les variables de contrôle :
+
+\begin{lstlisting}[language=JavaScript]
+const listPoke = document.querySelector('.list-poke');
+const searchForm = document.querySelector('.recherche-poke');
+const searchInput = document.querySelector('.recherche-poke input');
+const loader = document.querySelector('.loader');
+
+let allPokemon = [];
+let displayedPokemon = [];
+const limit = 1010; // On récupère TOUS les Pokémon disponibles
+const initialDisplay = 24;
+let index = initialDisplay;
+const increment = 24;
+\end{lstlisting}
+
+Ces variables servent à :
+\begin{itemize}
+    \item Stocker les références aux éléments DOM
+    \item Gérer les tableaux de données des Pokémon
+    \item Contrôler le nombre de Pokémon affichés et le chargement progressif
+\end{itemize}
+
+\subsection{Récupération des données}
+La fonction principale \texttt{fetchPokemonBase()} récupère la liste des Pokémon depuis l'API :
+
+\begin{lstlisting}[language=JavaScript]
+async function fetchPokemonBase() {
+    loader.style.display = 'block';
+    let url = `https://pokeapi.co/api/v2/pokemon?limit=${limit}`;
+    let response = await fetch(url);
+    let data = await response.json();
+    let promises = data.results.map(pokemon => fetchPokemonComplet(pokemon));
+    allPokemon = await Promise.all(promises);
+    displayedPokemon = allPokemon.slice(0, initialDisplay);
+    createCard(displayedPokemon);
+    loader.style.display = 'none';
+}
+\end{lstlisting}
+
+Cette fonction :
+\begin{itemize}
+    \item Affiche l'indicateur de chargement
+    \item Effectue une requête à l'API PokeAPI
+    \item Crée un tableau de promesses pour récupérer les détails de chaque Pokémon
+    \item Attend la résolution de toutes les promesses avec \texttt{Promise.all()}
+    \item Sélectionne les premiers Pokémon à afficher
+    \item Masque l'indicateur de chargement une fois terminé
+\end{itemize}
+
+\subsection{Récupération des détails}
+La fonction \texttt{fetchPokemonComplet()} récupère les détails spécifiques de chaque Pokémon :
+
+\begin{lstlisting}[language=JavaScript]
+async function fetchPokemonComplet(pokemon) {
+    let response = await fetch(pokemon.url);
+    let pokeData = await response.json();
+    return {
+        id: pokeData.id,
+        name: pokeData.name,
+        image: pokeData.sprites.front_default,
+        types: pokeData.types.map(t => t.type.name)
+    };
+}
+\end{lstlisting}
+
+Cette fonction extrait et retourne uniquement les informations pertinentes :
+\begin{itemize}
+    \item Identifiant
+    \item Nom
+    \item URL de l'image
+    \item Types du Pokémon
+\end{itemize}
+
+\subsection{Création des cartes}
+La fonction \texttt{createCard()} génère les éléments HTML pour chaque Pokémon :
+
+\begin{lstlisting}[language=JavaScript]
+function createCard(pokemonArray) {
+    pokemonArray.forEach(pokemon => {
+        let li = document.createElement('li');
+        li.classList.add('hoverableCarte');
+        li.style.backgroundColor = getColorByType(pokemon.types[0]);
+        
+        li.innerHTML = `
+            <h5>${pokemon.name}</h5>
+            <p>#${pokemon.id}</p>
+            <img src="${pokemon.image}" alt="${pokemon.name}">
+        `;
+        
+        listPoke.appendChild(li);
+    });
+}
+\end{lstlisting}
+
+Cette fonction :
+\begin{itemize}
+    \item Parcourt le tableau de Pokémon
+    \item Crée un élément de liste pour chaque Pokémon
+    \item Définit la couleur de fond en fonction du type principal
+    \item Ajoute le nom, l'identifiant et l'image du Pokémon
+    \item Ajoute l'élément à la liste dans le DOM
+\end{itemize}
+
+\subsection{Gestion des couleurs}
+La fonction \texttt{getColorByType()} associe une couleur à chaque type de Pokémon :
+
+\begin{lstlisting}[language=JavaScript]
+function getColorByType(type) {
+    const colors = {
+        fire: '#FDDFDF', water: '#DEF3FD', grass: '#DEFDE0', electric: '#FCF7DE', bug: '#F8D5A3',
+        poison: '#E0A7F7', normal: '#F5F5F5', ground: '#F4E7DA', fairy: '#FCEAFF',
+        fighting: '#E6E0D4', psychic: '#EAEDA1', rock: '#D5D5D4', ghost: '#705898',
+        ice: '#96D9D6', dragon: '#97B3E6'
+    };
+    return colors[type] || '#F5F5F5';
+}
+\end{lstlisting}
+
+Cette fonction utilise un objet de correspondance pour retourner une couleur hexadécimale en fonction du type de Pokémon.
+
+\subsection{Gestion des événements}
+Le script gère deux événements principaux :
+
+\subsubsection{Recherche}
+\begin{lstlisting}[language=JavaScript]
+searchForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let filter = searchInput.value.toLowerCase();
+    let filteredPokemon = allPokemon.filter(p => p.name.includes(filter));
+    listPoke.innerHTML = '';
+    createCard(filteredPokemon);
+});
+\end{lstlisting}
+
+Cet écouteur d'événements :
+\begin{itemize}
+    \item Empêche le comportement par défaut du formulaire
+    \item Récupère la valeur saisie et la convertit en minuscules
+    \item Filtre les Pokémon dont le nom contient la chaîne recherchée
+    \item Vide la liste actuelle
+    \item Affiche les résultats filtrés
+\end{itemize}
+
+\subsubsection{Défilement infini}
+\begin{lstlisting}[language=JavaScript]
+window.addEventListener('scroll', () => {
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 50) {
+        if (index < allPokemon.length) {
+            let nextPokemon = allPokemon.slice(index, index + increment);
+            index += increment;
+            createCard(nextPokemon);
+        }
+    }
+});
+\end{lstlisting}
+
+Cet écouteur d'événements :
+\begin{itemize}
+    \item Détecte quand l'utilisateur approche du bas de la page
+    \item Vérifie s'il reste des Pokémon à afficher
+    \item Sélectionne le prochain lot de Pokémon
+    \item Met à jour l'index
+    \item Ajoute les nouvelles cartes à la liste existante
+\end{itemize}
+
+\subsection{Initialisation}
+Le script se termine par l'initialisation de l'application :
+
+\begin{lstlisting}[language=JavaScript]
+document.addEventListener('DOMContentLoaded', fetchPokemonBase);
+\end{lstlisting}
+
+Cette ligne déclenche la récupération des données dès que le DOM est entièrement chargé.
+
+\section{Structure HTML}
+Le fichier HTML fournit la structure de base de l'application :
+
+\begin{lstlisting}[language=HTML]
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokédex</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Pokédex</h1>
+        <form class="recherche-poke">
+            <input type="text" placeholder="Rechercher un Pokémon...">
+            <button type="submit">🔍</button>
+        </form>
+    </header>
+    <ul class="list-poke"></ul>
+    <div class="loader"></div>
+    <script src="script.js"></script>
+</body>
+</html>
+\end{lstlisting}
+
+Les éléments clés sont :
+\begin{itemize}
+    \item Un en-tête avec le titre de l'application
+    \item Un formulaire de recherche avec un champ de saisie et un bouton
+    \item Une liste vide qui sera remplie par JavaScript
+    \item Un indicateur de chargement
+\end{itemize}
+
+\section{Styles CSS}
+Le fichier CSS définit l'apparence de l'application :
+
+\begin{lstlisting}[language=CSS]
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #ff3e3e;
+    padding: 20px;
+    color: white;
+}
+
+.recherche-poke {
+    margin-top: 10px;
+}
+
+.recherche-poke input {
+    padding: 10px;
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.recherche-poke button {
+    padding: 10px;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.list-poke {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+    list-style: none;
+}
+
+.hoverableCarte {
+    background-color: white;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.hoverableCarte:hover {
+    transform: scale(1.05);
+}
+
+img {
+    width: 100px;
+    height: 100px;
+}
+
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #ff3e3e;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+    display: none;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+\end{lstlisting}
+
+Les styles principaux incluent :
+\begin{itemize}
+    \item Une mise en page centrée avec une police sans-serif
+    \item Un en-tête rouge avec du texte blanc
+    \item Des cartes avec des coins arrondis et des ombres
+    \item Un effet d'agrandissement au survol des cartes
+    \item Un indicateur de chargement animé
+    \item Une disposition flexible pour les cartes qui s'adapte à différentes tailles d'écran
+\end{itemize}
+
+\section{Flux de l'application}
+Le flux de l'application peut être résumé comme suit :
+\begin{enumerate}
+    \item Le DOM se charge et déclenche \texttt{fetchPokemonBase()}
+    \item L'application récupère les données de tous les Pokémon
+    \item Les 24 premiers Pokémon sont affichés
+    \item L'utilisateur peut :
+    \begin{itemize}
+        \item Rechercher des Pokémon par nom
+        \item Faire défiler pour charger plus de Pokémon
+    \end{itemize}
+\end{enumerate}
+
+\section{Conclusion}
+Cette application Pokédex est un exemple efficace d'une application web moderne qui utilise :
+\begin{itemize}
+    \item Des requêtes API asynchrones avec \texttt{async/await}
+    \item La manipulation du DOM pour créer une interface dynamique
+    \item Des événements utilisateur pour une expérience interactive
+    \item CSS pour une présentation visuelle attrayante
+    \item Une architecture simple mais fonctionnelle
+\end{itemize}
+
+L'application démontre comment créer une interface utilisateur réactive qui charge des données à la demande, offrant ainsi une expérience utilisateur fluide même avec un grand ensemble de données.
+
+\end{document}
